@@ -13,7 +13,7 @@ protocol ReminderRoutingLogic {
 
 final class ReminderRouter: ReminderRoutingLogic {
   
-    weak var controller: ReminderController?
+    private weak var controller: ReminderController?
   
     init(controller: ReminderController? = nil) {
         self.controller = controller

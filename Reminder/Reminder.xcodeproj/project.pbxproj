@@ -23,6 +23,10 @@
 		29931E89293D105600B585F0 /* ReminderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29931E84293D105600B585F0 /* ReminderModels.swift */; };
 		29931E8A293D105600B585F0 /* ReminderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29931E85293D105600B585F0 /* ReminderController.swift */; };
 		29931E8B293D105600B585F0 /* ReminderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29931E86293D105600B585F0 /* ReminderInteractor.swift */; };
+		299F8EF12941045E001AC207 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299F8EEF2941045E001AC207 /* NoteCell.swift */; };
+		299F8EF22941045E001AC207 /* NoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299F8EF02941045E001AC207 /* NoteCell.xib */; };
+		299F8EF529410B03001AC207 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 299F8EF429410B03001AC207 /* Colors.xcassets */; };
+		299F8EF729410B40001AC207 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299F8EF629410B40001AC207 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +46,10 @@
 		29931E84293D105600B585F0 /* ReminderModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderModels.swift; sourceTree = "<group>"; };
 		29931E85293D105600B585F0 /* ReminderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderController.swift; sourceTree = "<group>"; };
 		29931E86293D105600B585F0 /* ReminderInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderInteractor.swift; sourceTree = "<group>"; };
+		299F8EEF2941045E001AC207 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		299F8EF02941045E001AC207 /* NoteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteCell.xib; sourceTree = "<group>"; };
+		299F8EF429410B03001AC207 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		299F8EF629410B40001AC207 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +84,7 @@
 		2950A4DE293D036B00F66963 /* Reminder */ = {
 			isa = PBXGroup;
 			children = (
+				299F8EF329410AE5001AC207 /* Style */,
 				2950A509293D0CFA00F66963 /* Protocols */,
 				2950A4F6293D04A300F66963 /* Modules */,
 				2950A4DF293D036B00F66963 /* AppDelegate.swift */,
@@ -111,6 +120,7 @@
 		2950A4F9293D053B00F66963 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				299F8EEE29410408001AC207 /* NoteCell */,
 				29931E85293D105600B585F0 /* ReminderController.swift */,
 				2950A4FC293D062600F66963 /* ReminderView.swift */,
 				2950A4FE293D064000F66963 /* ReminderView.xib */,
@@ -165,6 +175,24 @@
 				29931E86293D105600B585F0 /* ReminderInteractor.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		299F8EEE29410408001AC207 /* NoteCell */ = {
+			isa = PBXGroup;
+			children = (
+				299F8EEF2941045E001AC207 /* NoteCell.swift */,
+				299F8EF02941045E001AC207 /* NoteCell.xib */,
+			);
+			path = NoteCell;
+			sourceTree = "<group>";
+		};
+		299F8EF329410AE5001AC207 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				299F8EF429410B03001AC207 /* Colors.xcassets */,
+				299F8EF629410B40001AC207 /* Colors.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,9 +261,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				299F8EF529410B03001AC207 /* Colors.xcassets in Resources */,
 				2950A4EF293D036E00F66963 /* LaunchScreen.storyboard in Resources */,
 				2950A4FF293D064000F66963 /* ReminderView.xib in Resources */,
 				2950A4EC293D036E00F66963 /* Assets.xcassets in Resources */,
+				299F8EF22941045E001AC207 /* NoteCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,10 +279,12 @@
 				29931E8B293D105600B585F0 /* ReminderInteractor.swift in Sources */,
 				29931E88293D105600B585F0 /* ReminderRouter.swift in Sources */,
 				29931E89293D105600B585F0 /* ReminderModels.swift in Sources */,
+				299F8EF12941045E001AC207 /* NoteCell.swift in Sources */,
 				29931E8A293D105600B585F0 /* ReminderController.swift in Sources */,
 				29931E87293D105600B585F0 /* ReminderPresenter.swift in Sources */,
 				2950A508293D0C8000F66963 /* MainHelper.swift in Sources */,
 				2950A4E0293D036B00F66963 /* AppDelegate.swift in Sources */,
+				299F8EF729410B40001AC207 /* Colors.swift in Sources */,
 				2950A4FD293D062600F66963 /* ReminderView.swift in Sources */,
 				2950A50B293D0D1900F66963 /* TableHelper.swift in Sources */,
 				2950A4E2293D036B00F66963 /* SceneDelegate.swift in Sources */,
