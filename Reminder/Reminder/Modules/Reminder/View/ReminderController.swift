@@ -35,17 +35,11 @@ final class ReminderController: UIViewController {
         self.interactor = interactor
         self.router = router
     }
-    
 	
 	override func viewDidLoad() {
 		self.view = self.reminderView
 		self.reminderView.configure(with: nil)
 	}
-	
-	func mekeState() {
-		
-	}
-    
 }
 
 extension ReminderController: ReminderDisplayLogic {

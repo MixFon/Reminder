@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2926C4FD29447AB700A6A574 /* NotePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2926C4F829447AB700A6A574 /* NotePresenter.swift */; };
+		2926C4FE29447AB700A6A574 /* NoteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2926C4F929447AB700A6A574 /* NoteRouter.swift */; };
+		2926C4FF29447AB700A6A574 /* NoteModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2926C4FA29447AB700A6A574 /* NoteModels.swift */; };
+		2926C50029447AB700A6A574 /* NoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2926C4FB29447AB700A6A574 /* NoteController.swift */; };
+		2926C50129447AB700A6A574 /* NoteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2926C4FC29447AB700A6A574 /* NoteInteractor.swift */; };
+		2926C50829447B7000A6A574 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2926C50729447B7000A6A574 /* NoteView.swift */; };
+		2926C50A29447B7E00A6A574 /* NoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2926C50929447B7E00A6A574 /* NoteView.xib */; };
 		2950A4E0293D036B00F66963 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2950A4DF293D036B00F66963 /* AppDelegate.swift */; };
 		2950A4E2293D036B00F66963 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2950A4E1293D036B00F66963 /* SceneDelegate.swift */; };
 		2950A4EA293D036B00F66963 /* Reminder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2950A4E8293D036B00F66963 /* Reminder.xcdatamodeld */; };
@@ -18,18 +25,27 @@
 		2950A505293D073400F66963 /* CoreExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 2950A504293D073400F66963 /* CoreExtensions */; };
 		2950A508293D0C8000F66963 /* MainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2950A507293D0C8000F66963 /* MainHelper.swift */; };
 		2950A50B293D0D1900F66963 /* TableHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2950A50A293D0D1900F66963 /* TableHelper.swift */; };
+		296D30CE2944E67D009BC9CE /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296D30CD2944E67D009BC9CE /* NoteCell.swift */; };
+		296D30D02944E69A009BC9CE /* NoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 296D30CF2944E69A009BC9CE /* NoteCell.xib */; };
 		29931E87293D105600B585F0 /* ReminderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29931E82293D105600B585F0 /* ReminderPresenter.swift */; };
 		29931E88293D105600B585F0 /* ReminderRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29931E83293D105600B585F0 /* ReminderRouter.swift */; };
 		29931E89293D105600B585F0 /* ReminderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29931E84293D105600B585F0 /* ReminderModels.swift */; };
 		29931E8A293D105600B585F0 /* ReminderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29931E85293D105600B585F0 /* ReminderController.swift */; };
 		29931E8B293D105600B585F0 /* ReminderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29931E86293D105600B585F0 /* ReminderInteractor.swift */; };
-		299F8EF12941045E001AC207 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299F8EEF2941045E001AC207 /* NoteCell.swift */; };
-		299F8EF22941045E001AC207 /* NoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299F8EF02941045E001AC207 /* NoteCell.xib */; };
+		299F8EF12941045E001AC207 /* ChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299F8EEF2941045E001AC207 /* ChapterCell.swift */; };
+		299F8EF22941045E001AC207 /* ChapterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299F8EF02941045E001AC207 /* ChapterCell.xib */; };
 		299F8EF529410B03001AC207 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 299F8EF429410B03001AC207 /* Colors.xcassets */; };
 		299F8EF729410B40001AC207 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299F8EF629410B40001AC207 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2926C4F829447AB700A6A574 /* NotePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePresenter.swift; sourceTree = "<group>"; };
+		2926C4F929447AB700A6A574 /* NoteRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRouter.swift; sourceTree = "<group>"; };
+		2926C4FA29447AB700A6A574 /* NoteModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModels.swift; sourceTree = "<group>"; };
+		2926C4FB29447AB700A6A574 /* NoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteController.swift; sourceTree = "<group>"; };
+		2926C4FC29447AB700A6A574 /* NoteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteInteractor.swift; sourceTree = "<group>"; };
+		2926C50729447B7000A6A574 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
+		2926C50929447B7E00A6A574 /* NoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteView.xib; sourceTree = "<group>"; };
 		2950A4DC293D036B00F66963 /* Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2950A4DF293D036B00F66963 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2950A4E1293D036B00F66963 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,13 +57,15 @@
 		2950A4FE293D064000F66963 /* ReminderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReminderView.xib; sourceTree = "<group>"; };
 		2950A507293D0C8000F66963 /* MainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHelper.swift; sourceTree = "<group>"; };
 		2950A50A293D0D1900F66963 /* TableHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHelper.swift; sourceTree = "<group>"; };
+		296D30CD2944E67D009BC9CE /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		296D30CF2944E69A009BC9CE /* NoteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteCell.xib; sourceTree = "<group>"; };
 		29931E82293D105600B585F0 /* ReminderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderPresenter.swift; sourceTree = "<group>"; };
 		29931E83293D105600B585F0 /* ReminderRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderRouter.swift; sourceTree = "<group>"; };
 		29931E84293D105600B585F0 /* ReminderModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderModels.swift; sourceTree = "<group>"; };
 		29931E85293D105600B585F0 /* ReminderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderController.swift; sourceTree = "<group>"; };
 		29931E86293D105600B585F0 /* ReminderInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderInteractor.swift; sourceTree = "<group>"; };
-		299F8EEF2941045E001AC207 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
-		299F8EF02941045E001AC207 /* NoteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteCell.xib; sourceTree = "<group>"; };
+		299F8EEF2941045E001AC207 /* ChapterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterCell.swift; sourceTree = "<group>"; };
+		299F8EF02941045E001AC207 /* ChapterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChapterCell.xib; sourceTree = "<group>"; };
 		299F8EF429410B03001AC207 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		299F8EF629410B40001AC207 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,6 +83,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2926C4F729447A5900A6A574 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				2926C50629447AEB00A6A574 /* Interactor */,
+				2926C50529447AE200A6A574 /* View */,
+				2926C50429447AD900A6A574 /* Router */,
+				2926C50329447ACF00A6A574 /* Models */,
+				2926C50229447AC800A6A574 /* Presenter */,
+			);
+			path = Note;
+			sourceTree = "<group>";
+		};
+		2926C50229447AC800A6A574 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				2926C4F829447AB700A6A574 /* NotePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		2926C50329447ACF00A6A574 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2926C4FA29447AB700A6A574 /* NoteModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2926C50429447AD900A6A574 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				2926C4F929447AB700A6A574 /* NoteRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		2926C50529447AE200A6A574 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				296D30CA2944E605009BC9CE /* Cells */,
+				2926C4FB29447AB700A6A574 /* NoteController.swift */,
+				2926C50729447B7000A6A574 /* NoteView.swift */,
+				2926C50929447B7E00A6A574 /* NoteView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2926C50629447AEB00A6A574 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				2926C4FC29447AB700A6A574 /* NoteInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
 		2950A4D3293D036B00F66963 = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +173,7 @@
 		2950A4F6293D04A300F66963 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				2926C4F729447A5900A6A574 /* Note */,
 				2950A4F7293D04B100F66963 /* Reminder */,
 			);
 			path = Modules;
@@ -144,6 +218,15 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		296D30CA2944E605009BC9CE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				296D30CD2944E67D009BC9CE /* NoteCell.swift */,
+				296D30CF2944E69A009BC9CE /* NoteCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		29931E8D293D112400B585F0 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,8 +263,8 @@
 		299F8EEE29410408001AC207 /* NoteCell */ = {
 			isa = PBXGroup;
 			children = (
-				299F8EEF2941045E001AC207 /* NoteCell.swift */,
-				299F8EF02941045E001AC207 /* NoteCell.xib */,
+				299F8EEF2941045E001AC207 /* ChapterCell.swift */,
+				299F8EF02941045E001AC207 /* ChapterCell.xib */,
 			);
 			path = NoteCell;
 			sourceTree = "<group>";
@@ -261,11 +344,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				296D30D02944E69A009BC9CE /* NoteCell.xib in Resources */,
 				299F8EF529410B03001AC207 /* Colors.xcassets in Resources */,
 				2950A4EF293D036E00F66963 /* LaunchScreen.storyboard in Resources */,
 				2950A4FF293D064000F66963 /* ReminderView.xib in Resources */,
 				2950A4EC293D036E00F66963 /* Assets.xcassets in Resources */,
-				299F8EF22941045E001AC207 /* NoteCell.xib in Resources */,
+				2926C50A29447B7E00A6A574 /* NoteView.xib in Resources */,
+				299F8EF22941045E001AC207 /* ChapterCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,17 +362,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				29931E8B293D105600B585F0 /* ReminderInteractor.swift in Sources */,
+				2926C50029447AB700A6A574 /* NoteController.swift in Sources */,
 				29931E88293D105600B585F0 /* ReminderRouter.swift in Sources */,
 				29931E89293D105600B585F0 /* ReminderModels.swift in Sources */,
-				299F8EF12941045E001AC207 /* NoteCell.swift in Sources */,
+				299F8EF12941045E001AC207 /* ChapterCell.swift in Sources */,
 				29931E8A293D105600B585F0 /* ReminderController.swift in Sources */,
+				2926C50129447AB700A6A574 /* NoteInteractor.swift in Sources */,
+				296D30CE2944E67D009BC9CE /* NoteCell.swift in Sources */,
+				2926C4FF29447AB700A6A574 /* NoteModels.swift in Sources */,
 				29931E87293D105600B585F0 /* ReminderPresenter.swift in Sources */,
 				2950A508293D0C8000F66963 /* MainHelper.swift in Sources */,
 				2950A4E0293D036B00F66963 /* AppDelegate.swift in Sources */,
 				299F8EF729410B40001AC207 /* Colors.swift in Sources */,
+				2926C50829447B7000A6A574 /* NoteView.swift in Sources */,
 				2950A4FD293D062600F66963 /* ReminderView.swift in Sources */,
+				2926C4FE29447AB700A6A574 /* NoteRouter.swift in Sources */,
 				2950A50B293D0D1900F66963 /* TableHelper.swift in Sources */,
 				2950A4E2293D036B00F66963 /* SceneDelegate.swift in Sources */,
+				2926C4FD29447AB700A6A574 /* NotePresenter.swift in Sources */,
 				2950A4EA293D036B00F66963 /* Reminder.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
