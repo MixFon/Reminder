@@ -10,7 +10,9 @@ import CoreTableView
 import CoreExtensions
 
 protocol _NoteCell: CellData {
-
+	var title: String? { get }
+	var image: UIImage? { get }
+	var tintColor: UIColor? { get }
 }
 
 extension _NoteCell {
@@ -19,7 +21,8 @@ extension _NoteCell {
 	
 	public func hashValues() -> [Int] {
 		return [
-			
+			self.title.hashValue,
+			self.tintColor.hashValue
 		]
 	}
 	
@@ -38,11 +41,22 @@ extension _NoteCell {
 
 final class NoteCell: UITableViewCell {
 
+	@IBOutlet weak var title: UILabel!
+	@IBOutlet weak var leftImage: UIImageView!
+	@IBOutlet weak var backgroundCell: UIView!
+	
 	override func awakeFromNib() {
 		super.awakeFromNib()
 	}
+	
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		self.backgroundCell.layer.contents = 16
+	}
 
 	func configure(with data: _NoteCell) {
-		
+		self.title.text = data.title
+		self.leftImage.tintColor = data.tintColor
+		self.leftImage.image = data.image
 	}
 }

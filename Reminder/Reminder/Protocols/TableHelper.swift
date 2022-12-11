@@ -8,7 +8,7 @@
 import Foundation
 import CoreTableView
 
-public protocol _TableHelper {
+protocol _TableHelper {
 	func makeState() -> State
 	func makeHeader() -> HeaderData?
 	func makeFooter() -> FooterData?

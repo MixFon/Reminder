@@ -8,15 +8,21 @@
 import UIKit
 import CoreTableView
 
-protocol _ReminderView {
-	
+protocol ReminderShow {
+	var states: [State]? { get }
 }
 
 final class ReminderView: UIView {
 	
 	@IBOutlet weak var table: BaseTableView!
 	
-	func configure(with data: _ReminderView?) {
-		self.table.backgroundColor = .red
+	struct ViewState {
+		
+	}
+	
+	func configure(with data: ReminderShow?) {
+		if let states = data?.states {
+			self.table.viewStateInput = states
+		}
 	}
 }

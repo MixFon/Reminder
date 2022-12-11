@@ -9,17 +9,17 @@ import UIKit
 import CoreExtensions
 
 protocol ReminderDisplayLogic: AnyObject {
-    
+	func displayState(show: Reminder.ViewModel)
 }
 
 final class ReminderController: UIViewController {
     
-	private let reminderView = ReminderView.loadFromNib()
-    private var interactor: ReminderBusinessLogic?
 	private var router: ReminderRoutingLogic?
+	private let mainView = ReminderView.loadFromNib()
+    private var interactor: ReminderBusinessLogic?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: "ReminderController", bundle: nibBundleOrNil)
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
     }
     
@@ -37,11 +37,16 @@ final class ReminderController: UIViewController {
     }
 	
 	override func viewDidLoad() {
-		self.view = self.reminderView
-		self.reminderView.configure(with: nil)
+		self.view = self.mainView
+		self.interactor?.makeState(requst: .start)
 	}
 }
 
 extension ReminderController: ReminderDisplayLogic {
-    
+	func displayState(show: Reminder.ViewModel) {
+		switch show {
+		case .display(let data):
+			self.mainView.configure(with: data)
+		}
+	}
 }

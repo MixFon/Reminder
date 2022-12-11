@@ -6,18 +6,34 @@
 //
 
 import UIKit
+import CoreTableView
+
+protocol _Chapter {
+	var notes: [String]? { get }
+	var chapter: String? { get }
+}
 
 enum Reminder {
     
     enum Request {
-        
+		case start
     }
     
     enum Response {
-        
+		case start
+		case work([_Chapter])
+		
+		struct Chapter: _Chapter {
+			var notes: [String]?
+			var chapter: String?
+		}
     }
     
-    enum ViewModel {
-        
+	enum ViewModel {
+		case display(ReminderShow)
+		
+		struct Show: ReminderShow {
+			var states: [State]?
+		}
     }
 }

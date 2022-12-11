@@ -15,7 +15,7 @@ final class ReminderRouter: ReminderRoutingLogic {
   
     private weak var controller: ReminderController?
   
-    init(controller: ReminderController? = nil) {
+    init(controller: ReminderController?) {
         self.controller = controller
     }
 

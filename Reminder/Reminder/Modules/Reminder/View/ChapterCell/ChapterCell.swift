@@ -43,8 +43,12 @@ final class ChapterCell: UITableViewCell {
 	
 	override func awakeFromNib() {
         super.awakeFromNib()
-		self.backgroundCell.roundCorners(.all, radius: 10)
     }
+	
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		self.backgroundCell.layer.cornerRadius = 10
+	}
 
 	func configure(with data: _ChapterCell) {
 		self.title.text = data.title
