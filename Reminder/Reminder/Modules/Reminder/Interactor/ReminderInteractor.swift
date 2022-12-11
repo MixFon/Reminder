@@ -16,9 +16,14 @@ protocol ReminderBusinessLogic: AnyObject {
 	func makeState(requst: Reminder.Request)
 }
 
-final class ReminderInteractor: ReminderBusinessLogic {
+protocol ReminderDataStore {
+	var chapters: [_Chapter]? { get }
+}
+
+final class ReminderInteractor: ReminderBusinessLogic, ReminderDataStore {
 
     private var presenter: ReminderPresentationLogic?
+	var chapters: [_Chapter]?
     
     init(presenter: ReminderPresentationLogic?) {
         self.presenter = presenter

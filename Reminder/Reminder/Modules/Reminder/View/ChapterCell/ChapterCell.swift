@@ -15,7 +15,7 @@ protocol _ChapterCell: CellData {
 
 extension _ChapterCell {
 	
-	public var height: CGFloat { return 76 }
+	public var height: CGFloat { return 79 }
 	
 	public func hashValues() -> [Int] {
 		return [

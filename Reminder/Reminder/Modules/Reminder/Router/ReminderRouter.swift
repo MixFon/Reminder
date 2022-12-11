@@ -8,15 +8,24 @@
 import UIKit
 
 protocol ReminderRoutingLogic {
-    
+	func presentNoteController()
 }
 
-final class ReminderRouter: ReminderRoutingLogic {
+protocol ReminderDataPassing {
+  var dataStore: ReminderDataStore? { get }
+}
+
+final class ReminderRouter: ReminderRoutingLogic, ReminderDataPassing {
   
     private weak var controller: ReminderController?
+	var dataStore: ReminderDataStore?
   
     init(controller: ReminderController?) {
         self.controller = controller
     }
+	
+	func presentNoteController() {
+		
+	}
 
 }

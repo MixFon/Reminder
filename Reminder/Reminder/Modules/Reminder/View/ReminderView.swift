@@ -18,6 +18,11 @@ final class ReminderView: UIView {
 	
 	struct ViewState {
 		
+		struct Chapter: _ChapterCell {
+			var id: String
+			var title: String?
+			var onItemSelect: Command<Void>
+		}
 	}
 	
 	func configure(with data: ReminderShow?) {

@@ -14,7 +14,7 @@ protocol ReminderDisplayLogic: AnyObject {
 
 final class ReminderController: UIViewController {
     
-	private var router: ReminderRoutingLogic?
+	private var router: (ReminderRoutingLogic & ReminderDataPassing)?
 	private let mainView = ReminderView.loadFromNib()
     private var interactor: ReminderBusinessLogic?
     
@@ -32,6 +32,7 @@ final class ReminderController: UIViewController {
         let presenter = ReminderPresenter(controller: self)
         let interactor = ReminderInteractor(presenter: presenter)
         let router = ReminderRouter(controller: self)
+		router.dataStore = interactor
         self.interactor = interactor
         self.router = router
     }
@@ -47,6 +48,8 @@ extension ReminderController: ReminderDisplayLogic {
 		switch show {
 		case .display(let data):
 			self.mainView.configure(with: data)
+		case .present:
+			self.router?.presentNoteController()
 		}
 	}
 }
