@@ -35,6 +35,7 @@ final class ReminderController: UIViewController {
 		router.dataStore = interactor
         self.interactor = interactor
         self.router = router
+		self.router?.dataStore = interactor
     }
 	
 	override func viewDidLoad() {

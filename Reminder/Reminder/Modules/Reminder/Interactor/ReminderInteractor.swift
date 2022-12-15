@@ -17,18 +17,19 @@ protocol ReminderBusinessLogic: AnyObject {
 }
 
 protocol ReminderDataStore {
-	var chapters: [_Chapter]? { get }
+	func getChapters() -> [_Chapter]?
+	func setChapters(chapter: _Chapter?)
 }
 
 final class ReminderInteractor: ReminderBusinessLogic, ReminderDataStore {
-
-    private var presenter: ReminderPresentationLogic?
-	var chapters: [_Chapter]?
-    
-    init(presenter: ReminderPresentationLogic?) {
-        self.presenter = presenter
-    }
-    
+	
+	private var presenter: ReminderPresentationLogic?
+	private var chapters: [_Chapter]?
+	
+	init(presenter: ReminderPresentationLogic?) {
+		self.presenter = presenter
+	}
+	
 	func makeState(requst: Reminder.Request) {
 		switch requst {
 		case .start:
@@ -38,5 +39,12 @@ final class ReminderInteractor: ReminderBusinessLogic, ReminderDataStore {
 		}
 	}
 	
+	func getChapters() -> [_Chapter]? {
+		return self.chapters
+	}
+	
+	func setChapters(chapter: _Chapter?) {
+		
+	}
 
 }

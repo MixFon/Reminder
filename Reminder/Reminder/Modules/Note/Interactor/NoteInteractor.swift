@@ -11,12 +11,18 @@ protocol NoteBusinessLogic: AnyObject {
    func makeState(requst: Note.Request)
 }
 
-final class NoteInteractor: NoteBusinessLogic {
+protocol NoteDataStore {
+
+}
+
+final class NoteInteractor: NoteBusinessLogic, NoteDataStore {
     
     private var presenter: NotePresentationLogic?
+	private var chapter: _Chapter?
     
-    init(presenter: NotePresentationLogic? = nil) {
+	init(presenter: NotePresentationLogic? = nil, chapter: _Chapter? = nil) {
         self.presenter = presenter
+		self.chapter = chapter
     }
     
 	func makeState(requst: Note.Request) {

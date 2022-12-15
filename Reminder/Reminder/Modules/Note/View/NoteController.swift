@@ -16,25 +16,31 @@ final class NoteController: UIViewController {
     
 	private let mainView = NoteView.loadFromNib()
 	
+	private var router: (NoteRoutingLogic & NoteDataPassing)?
 	private var interactor: NoteBusinessLogic?
-	private var router: NoteRoutingLogic?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: "NoteController", bundle: nibBundleOrNil)
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
     }
+	
+	init(chapter: _Chapter? = nil) {
+		super.init(nibName: nil, bundle: nil)
+		setup(chapter: chapter)
+	}
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
     }
     
-    private func setup() {
+    private func setup(chapter: _Chapter? = nil) {
         let presenter = NotePresenter(controller: self)
-        let interactor = NoteInteractor(presenter: presenter)
+        let interactor = NoteInteractor(presenter: presenter, chapter: chapter)
         let router = NoteRouter(controller: self)
         self.interactor = interactor
         self.router = router
+		self.router?.dataStore = interactor
     }
     
     override func viewDidLoad() {

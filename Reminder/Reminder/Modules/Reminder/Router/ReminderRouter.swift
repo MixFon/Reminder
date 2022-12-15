@@ -12,7 +12,7 @@ protocol ReminderRoutingLogic {
 }
 
 protocol ReminderDataPassing {
-  var dataStore: ReminderDataStore? { get }
+	var dataStore: ReminderDataStore? { get set }
 }
 
 final class ReminderRouter: ReminderRoutingLogic, ReminderDataPassing {
@@ -20,7 +20,7 @@ final class ReminderRouter: ReminderRoutingLogic, ReminderDataPassing {
     private weak var controller: ReminderController?
 	var dataStore: ReminderDataStore?
   
-    init(controller: ReminderController?) {
+    init(controller: ReminderController? = nil) {
         self.controller = controller
     }
 	

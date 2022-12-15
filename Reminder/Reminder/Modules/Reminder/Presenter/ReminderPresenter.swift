@@ -15,7 +15,7 @@ final class ReminderPresenter: ReminderPresentationLogic {
     
     private weak var controller: ReminderDisplayLogic?
     
-    init(controller: ReminderDisplayLogic?) {
+    init(controller: ReminderDisplayLogic? = nil) {
         self.controller = controller
     }
     
@@ -25,10 +25,17 @@ final class ReminderPresenter: ReminderPresentationLogic {
 			let show = Reminder.ViewModel.Show()
 			self.controller?.displayState(show: .display(show))
 		case .work(let chapters):
-			let chapterHelper = ChapterHelper(chapters: chapters, controller: self.controller)
+			let chapterHelper = ChapterHelper(chapters: chapters, actions: self)
 			let state = chapterHelper.makeState()
 			let show = Reminder.ViewModel.Show(states: [state])
 			self.controller?.displayState(show: .display(show))
 		}
+	}
+}
+
+extension ReminderPresenter: ChapterActions {
+	
+	func selectChapter(chapter: _Chapter) {
+		self.controller?.displayState(show: .present(chapter))
 	}
 }

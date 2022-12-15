@@ -8,14 +8,20 @@
 import Foundation
 import CoreTableView
 
+protocol ChapterActions {
+	func selectChapter(chapter: _Chapter)
+}
+
 final class ChapterHelper: _TableHelper {
 	
 	private var chapters: [_Chapter]?
-	private var controller: ReminderDisplayLogic?
+	private var actions: ChapterActions?
 	
-	init(chapters: [_Chapter]?, controller: ReminderDisplayLogic?) {
+	var onSelect: Command<_Chapter>?
+	
+	init(chapters: [_Chapter]?, actions: ChapterActions? = nil) {
 		self.chapters = chapters
-		self.controller = controller
+		self.actions = actions
 	}
 	
 	func makeHeader() -> HeaderData? {
@@ -30,7 +36,7 @@ final class ChapterHelper: _TableHelper {
 				title: chapter.chapter,
 				onItemSelect: Command { [weak self] in
 					guard let self else { return }
-					self.controller?.displayState(show: .present)
+					self.actions?.selectChapter(chapter: chapter)
 				}
 			)
 			elements.append(dataChapters.toElement())

@@ -31,7 +31,7 @@ enum Reminder {
     
 	enum ViewModel {
 		case display(ReminderShow)
-		case present
+		case present(_Chapter)
 		
 		struct Show: ReminderShow {
 			var states: [State]?

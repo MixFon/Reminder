@@ -11,12 +11,17 @@ protocol NoteRoutingLogic {
     
 }
 
-final class NoteRouter: NoteRoutingLogic {
-  
-    weak var controller: NoteController?
-  
-    init(controller: NoteController? = nil) {
-        self.controller = controller
-    }
+protocol NoteDataPassing {
+  var dataStore: NoteDataStore? { get set }
+}
 
+final class NoteRouter: NoteRoutingLogic, NoteDataPassing {
+	
+	private weak var controller: NoteController?
+	var dataStore: NoteDataStore?
+	
+	init(controller: NoteController? = nil) {
+		self.controller = controller
+	}
+	
 }
