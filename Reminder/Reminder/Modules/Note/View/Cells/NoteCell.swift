@@ -47,11 +47,12 @@ final class NoteCell: UITableViewCell {
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
+		self.selectionStyle = .none
 	}
 	
 	override func layoutSubviews() {
 		super.layoutSubviews()
-		self.backgroundCell.layer.contents = 16
+		self.backgroundCell.layer.cornerRadius = 16
 	}
 
 	func configure(with data: _NoteCell) {

@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,17 +15,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4b6-dK-MA2">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="73"/>
+                    <rect key="frame" x="0.0" y="6" width="393" height="61"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dXD-2j-fol">
-                            <rect key="frame" x="16" y="24" width="25" height="25"/>
+                            <rect key="frame" x="16" y="18" width="25" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="25" id="79j-HH-Xue"/>
                                 <constraint firstAttribute="height" constant="25" id="WZo-a5-IrL"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fxn-fa-GxM">
-                            <rect key="frame" x="55" y="28" width="320" height="17"/>
+                            <rect key="frame" x="55" y="22" width="320" height="17"/>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                             <color key="textColor" name="BackgroundPrimary"/>
                             <nil key="highlightedColor"/>
@@ -43,16 +42,16 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="BackgroundPrimary"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="4b6-dK-MA2" secondAttribute="bottom" id="4j4-go-Voh"/>
+                <constraint firstAttribute="bottom" secondItem="4b6-dK-MA2" secondAttribute="bottom" constant="6" id="4j4-go-Voh"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4b6-dK-MA2" secondAttribute="trailing" id="6jY-jZ-QaB"/>
                 <constraint firstItem="4b6-dK-MA2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="qxW-1j-gzn"/>
-                <constraint firstItem="4b6-dK-MA2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zSa-ap-pKa"/>
+                <constraint firstItem="4b6-dK-MA2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="zSa-ap-pKa"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="backgroundCell" destination="4b6-dK-MA2" id="w3e-Z0-jnu"/>
+                <outlet property="backgroundCell" destination="4b6-dK-MA2" id="Zeb-px-PcC"/>
                 <outlet property="leftImage" destination="dXD-2j-fol" id="dZe-p6-ajY"/>
                 <outlet property="title" destination="Fxn-fa-GxM" id="BJc-ez-L6D"/>
             </connections>
@@ -66,8 +65,5 @@
         <namedColor name="TintPrimary">
             <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

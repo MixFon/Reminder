@@ -19,7 +19,7 @@ final class ChapterHelper: _TableHelper {
 	
 	var onSelect: Command<_Chapter>?
 	
-	init(chapters: [_Chapter]?, actions: ChapterActions? = nil) {
+	init(chapters: [_Chapter]? = nil, actions: ChapterActions? = nil) {
 		self.chapters = chapters
 		self.actions = actions
 	}
@@ -34,8 +34,7 @@ final class ChapterHelper: _TableHelper {
 			let dataChapters = ReminderView.ViewState.Chapter(
 				id: chapter.chapter ?? "",
 				title: chapter.chapter,
-				onItemSelect: Command { [weak self] in
-					guard let self else { return }
+				onItemSelect: Command {
 					self.actions?.selectChapter(chapter: chapter)
 				}
 			)

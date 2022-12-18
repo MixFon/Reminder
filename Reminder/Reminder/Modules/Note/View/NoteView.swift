@@ -9,6 +9,7 @@ import UIKit
 import CoreTableView
 
 protocol NoteShow {
+	var title: String? { get }
 	var states: [State]? { get }
 }
 
@@ -18,6 +19,12 @@ final class NoteView: UIView {
 	
 	struct ViewState {
 		
+		struct NoteCell: _NoteCell {
+			var id: String
+			var title: String?
+			var image: UIImage?
+			var tintColor: UIColor?
+		}
 	}
 	
 	func configure(with data: NoteShow) {

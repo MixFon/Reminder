@@ -26,6 +26,9 @@ final class NoteInteractor: NoteBusinessLogic, NoteDataStore {
     }
     
 	func makeState(requst: Note.Request) {
-		
+		switch requst {
+		case .start:
+			self.presenter?.buildState(response: .work(self.chapter))
+		}
 	}
 }

@@ -18,6 +18,7 @@ final class NoteController: UIViewController {
 	
 	private var router: (NoteRoutingLogic & NoteDataPassing)?
 	private var interactor: NoteBusinessLogic?
+	var dataReturn: ReminderDataReturn?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -57,6 +58,8 @@ extension NoteController: NoteDisplayLogic {
 		switch show {
 		case .display(let data):
 			self.mainView.configure(with: data)
+		case .present:
+			self.router?.presentController()
 		}
 	}
 	

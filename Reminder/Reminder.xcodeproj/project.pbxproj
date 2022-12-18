@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2910881D294DE922003C20E3 /* NoteHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2910881C294DE922003C20E3 /* NoteHelper.swift */; };
 		2926C4FD29447AB700A6A574 /* NotePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2926C4F829447AB700A6A574 /* NotePresenter.swift */; };
 		2926C4FE29447AB700A6A574 /* NoteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2926C4F929447AB700A6A574 /* NoteRouter.swift */; };
 		2926C4FF29447AB700A6A574 /* NoteModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2926C4FA29447AB700A6A574 /* NoteModels.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2910881C294DE922003C20E3 /* NoteHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteHelper.swift; sourceTree = "<group>"; };
 		2926C4F829447AB700A6A574 /* NotePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePresenter.swift; sourceTree = "<group>"; };
 		2926C4F929447AB700A6A574 /* NoteRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRouter.swift; sourceTree = "<group>"; };
 		2926C4FA29447AB700A6A574 /* NoteModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModels.swift; sourceTree = "<group>"; };
@@ -85,6 +87,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2910881B294DE90A003C20E3 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2910881C294DE922003C20E3 /* NoteHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		2926C4F729447A5900A6A574 /* Note */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +110,7 @@
 		2926C50229447AC800A6A574 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				2910881B294DE90A003C20E3 /* Helpers */,
 				2926C4F829447AB700A6A574 /* NotePresenter.swift */,
 			);
 			path = Presenter;
@@ -381,6 +392,7 @@
 				299F8EF12941045E001AC207 /* ChapterCell.swift in Sources */,
 				29931E8A293D105600B585F0 /* ReminderController.swift in Sources */,
 				2926C50129447AB700A6A574 /* NoteInteractor.swift in Sources */,
+				2910881D294DE922003C20E3 /* NoteHelper.swift in Sources */,
 				296D30CE2944E67D009BC9CE /* NoteCell.swift in Sources */,
 				2926C4FF29447AB700A6A574 /* NoteModels.swift in Sources */,
 				29931E87293D105600B585F0 /* ReminderPresenter.swift in Sources */,

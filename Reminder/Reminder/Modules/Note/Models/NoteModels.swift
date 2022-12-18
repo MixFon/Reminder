@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreTableView
 
 enum Note {
     
@@ -14,10 +15,17 @@ enum Note {
     }
     
     enum Response {
+		case work(_Chapter?)
 		case start
     }
     
     enum ViewModel {
         case display(NoteShow)
+		case present
+		
+		struct Show: NoteShow {
+			var title: String?
+			var states: [State]?
+		}
     }
 }

@@ -8,11 +8,15 @@
 import UIKit
 
 protocol ReminderRoutingLogic {
-	func presentNoteController()
+	func presentController(chapter: _Chapter?)
 }
 
 protocol ReminderDataPassing {
 	var dataStore: ReminderDataStore? { get set }
+}
+
+protocol ReminderDataReturn {
+	func returnChangeChapter(chapter: _Chapter?)
 }
 
 final class ReminderRouter: ReminderRoutingLogic, ReminderDataPassing {
@@ -24,8 +28,18 @@ final class ReminderRouter: ReminderRoutingLogic, ReminderDataPassing {
         self.controller = controller
     }
 	
-	func presentNoteController() {
-		
+	func presentController(chapter: _Chapter?) {
+		let noteController = NoteController(chapter: chapter)
+		noteController.dataReturn = self
+		//self.controller?.navigationController?.pushViewController(noteController, animated: true)
+		self.controller?.present(noteController, animated: true)
 	}
 
+}
+
+extension ReminderRouter: ReminderDataReturn {
+	
+	func returnChangeChapter(chapter: _Chapter?) {
+		self.dataStore?.setChapters(chapter: chapter)
+	}
 }

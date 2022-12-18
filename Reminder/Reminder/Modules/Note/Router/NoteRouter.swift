@@ -8,11 +8,15 @@
 import UIKit
 
 protocol NoteRoutingLogic {
-    
+	func presentController()
 }
 
 protocol NoteDataPassing {
   var dataStore: NoteDataStore? { get set }
+}
+
+protocol NoteDataReturn {
+	
 }
 
 final class NoteRouter: NoteRoutingLogic, NoteDataPassing {
@@ -23,5 +27,12 @@ final class NoteRouter: NoteRoutingLogic, NoteDataPassing {
 	init(controller: NoteController? = nil) {
 		self.controller = controller
 	}
+	
+	func presentController() {
+		
+	}
+}
+
+extension NoteRouter: NoteDataReturn {
 	
 }

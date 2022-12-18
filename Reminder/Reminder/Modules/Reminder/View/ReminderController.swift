@@ -9,7 +9,7 @@ import UIKit
 import CoreExtensions
 
 protocol ReminderDisplayLogic: AnyObject {
-	func displayState(show: Reminder.ViewModel)
+	func displayContent(show: Reminder.ViewModel)
 }
 
 final class ReminderController: UIViewController {
@@ -45,12 +45,12 @@ final class ReminderController: UIViewController {
 }
 
 extension ReminderController: ReminderDisplayLogic {
-	func displayState(show: Reminder.ViewModel) {
+	func displayContent(show: Reminder.ViewModel) {
 		switch show {
 		case .display(let data):
 			self.mainView.configure(with: data)
-		case .present:
-			self.router?.presentNoteController()
+		case .present(let chapter):
+			self.router?.presentController(chapter: chapter)
 		}
 	}
 }

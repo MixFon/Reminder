@@ -23,12 +23,12 @@ final class ReminderPresenter: ReminderPresentationLogic {
 		switch response {
 		case .start:
 			let show = Reminder.ViewModel.Show()
-			self.controller?.displayState(show: .display(show))
+			self.controller?.displayContent(show: .display(show))
 		case .work(let chapters):
 			let chapterHelper = ChapterHelper(chapters: chapters, actions: self)
 			let state = chapterHelper.makeState()
 			let show = Reminder.ViewModel.Show(states: [state])
-			self.controller?.displayState(show: .display(show))
+			self.controller?.displayContent(show: .display(show))
 		}
 	}
 }
@@ -36,6 +36,6 @@ final class ReminderPresenter: ReminderPresentationLogic {
 extension ReminderPresenter: ChapterActions {
 	
 	func selectChapter(chapter: _Chapter) {
-		self.controller?.displayState(show: .present(chapter))
+		self.controller?.displayContent(show: .present(chapter))
 	}
 }

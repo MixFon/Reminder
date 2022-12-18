@@ -43,6 +43,7 @@ final class ChapterCell: UITableViewCell {
 	
 	override func awakeFromNib() {
         super.awakeFromNib()
+		self.selectionStyle = .none
     }
 	
 	override func layoutSubviews() {
