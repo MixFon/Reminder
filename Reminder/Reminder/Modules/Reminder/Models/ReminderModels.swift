@@ -17,6 +17,7 @@ enum Reminder {
     
     enum Request {
 		case start
+		case selectChapter(_Chapter?)
     }
     
     enum Response {

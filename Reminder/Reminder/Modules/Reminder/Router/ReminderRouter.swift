@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ReminderRoutingLogic {
-	func presentController(chapter: _Chapter?)
+	func presentController()
 }
 
 protocol ReminderDataPassing {
@@ -24,20 +24,22 @@ final class ReminderRouter: ReminderRoutingLogic, ReminderDataPassing {
         self.controller = controller
     }
 	
-	func presentController(chapter: _Chapter?) {
+	func presentController() {
 		let noteController = NoteController()
 		noteController.modalPresentationStyle = .fullScreen
+		noteController.setPipe(pipe: self)
 		self.controller?.present(noteController, animated: true)
 	}
 
 }
 
 extension ReminderRouter: NotePipe {
-	func acceptChapter(chapter: _Chapter?) {
-		
+	func acceptChapter() -> _Chapter? {
+		let chapter = self.dataStore?.getSelectChapter()
+		return chapter
 	}
 	
 	func returnChapter(chapter: _Chapter?) {
-		self.dataStore?.setChapters(chapter: chapter)
+		self.dataStore?.setChapter(chapter: chapter)
 	}
 }

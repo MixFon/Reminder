@@ -20,7 +20,7 @@ protocol NoteDataPassing {
 /// Подписывается роутер из которого передаются данные
 protocol NotePipe {
 	func returnChapter(chapter: _Chapter?)
-	func acceptChapter(chapter: _Chapter?)
+	func acceptChapter() -> _Chapter?
 }
 
 final class NoteRouter: NoteRoutingLogic, NoteDataPassing {

@@ -50,7 +50,8 @@ extension ReminderController: ReminderDisplayLogic {
 		case .display(let data):
 			self.mainView.configure(with: data)
 		case .present(let chapter):
-			self.router?.presentController(chapter: chapter)
+			self.interactor?.makeState(requst: .selectChapter(chapter))
+			self.router?.presentController()
 		}
 	}
 }

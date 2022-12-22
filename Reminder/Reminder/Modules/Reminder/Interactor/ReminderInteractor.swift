@@ -17,14 +17,16 @@ protocol ReminderBusinessLogic: AnyObject {
 }
 
 protocol ReminderDataStore {
+	func getSelectChapter() -> _Chapter?
+	func setChapter(chapter: _Chapter?)
 	func getChapters() -> [_Chapter]?
-	func setChapters(chapter: _Chapter?)
 }
 
 final class ReminderInteractor: ReminderBusinessLogic, ReminderDataStore {
-	
+
 	private var presenter: ReminderPresentationLogic?
 	private let manager = ReminderManager()
+	private var selectChapter: _Chapter?
 	
 	init(presenter: ReminderPresentationLogic?) {
 		self.presenter = presenter
@@ -35,6 +37,8 @@ final class ReminderInteractor: ReminderBusinessLogic, ReminderDataStore {
 		case .start:
 			let chapters = self.manager.getChapters()
 			self.presenter?.buildState(response: .work(chapters))
+		case .selectChapter(let chapter):
+			self.selectChapter = chapter
 		}
 	}
 	
@@ -42,8 +46,11 @@ final class ReminderInteractor: ReminderBusinessLogic, ReminderDataStore {
 		return self.manager.getChapters()
 	}
 	
-	func setChapters(chapter: _Chapter?) {
-		
+	func setChapter(chapter: _Chapter?) {
+		self.manager.setChapter(chapter: chapter)
 	}
-
+	
+	func getSelectChapter() -> _Chapter? {
+		return self.selectChapter
+	}
 }
