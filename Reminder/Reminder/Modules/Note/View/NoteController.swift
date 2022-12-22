@@ -23,27 +23,22 @@ final class NoteController: UIViewController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
     }
-	
-	init(chapter: _Chapter? = nil, dataReturn: ReminderDataReturn? = nil) {
-		super.init(nibName: nil, bundle: nil)
-		setup(chapter: chapter, dataReturn: dataReturn)
-	}
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
     }
 	
-	func setDataAccept(dataAccept: NoteDataAccept?) {
-		self.router?.setDataAccept(dataAccept: dataAccept)
+	func setPipe(pipe: NotePipe?) {
+		self.router?.setPipe(pipe: pipe)
 	}
     
-    private func setup(chapter: _Chapter? = nil, dataReturn: ReminderDataReturn? = nil) {
+    private func setup() {
 		self.mainView.delegate = self
 		
         let presenter = NotePresenter(controller: self)
-        let interactor = NoteInteractor(presenter: presenter, chapter: chapter)
-        let router = NoteRouter(controller: self, dataReturn: dataReturn)
+        let interactor = NoteInteractor(presenter: presenter)
+        let router = NoteRouter(controller: self)
         self.interactor = interactor
         self.router = router
 		self.router?.dataStore = interactor

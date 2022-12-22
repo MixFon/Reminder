@@ -15,10 +15,6 @@ protocol ReminderDataPassing {
 	var dataStore: ReminderDataStore? { get set }
 }
 
-protocol ReminderDataReturn {
-	func returnChangeChapter(chapter: _Chapter?)
-}
-
 final class ReminderRouter: ReminderRoutingLogic, ReminderDataPassing {
   
     private weak var controller: ReminderController?
@@ -29,16 +25,19 @@ final class ReminderRouter: ReminderRoutingLogic, ReminderDataPassing {
     }
 	
 	func presentController(chapter: _Chapter?) {
-		let noteController = NoteController(chapter: chapter, dataReturn: self)
+		let noteController = NoteController()
 		noteController.modalPresentationStyle = .fullScreen
 		self.controller?.present(noteController, animated: true)
 	}
 
 }
 
-extension ReminderRouter: ReminderDataReturn {
+extension ReminderRouter: NotePipe {
+	func acceptChapter(chapter: _Chapter?) {
+		
+	}
 	
-	func returnChangeChapter(chapter: _Chapter?) {
+	func returnChapter(chapter: _Chapter?) {
 		self.dataStore?.setChapters(chapter: chapter)
 	}
 }

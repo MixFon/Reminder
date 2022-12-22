@@ -8,7 +8,7 @@
 import UIKit
 
 protocol NoteRoutingLogic {
-	func setDataAccept(dataAccept: NoteDataAccept?)
+	func setPipe(pipe: NotePipe?)
 	func returnChapter()
 }
 
@@ -16,50 +16,33 @@ protocol NoteDataPassing {
   var dataStore: NoteDataStore? { get set }
 }
 
-/// Протокол для обработки возвращаемых от других контроллеров данных.
-/// Подписывается текущий роутер
-protocol NoteDataReturn {
-	
-}
-
-/// Протокол для обработки устанавливаемых от других контроллеров данных.
+/// Протокол для передачи данных между роутерами.
 /// Подписывается роутер из которого передаются данные
-protocol NoteDataAccept {
-	
+protocol NotePipe {
+	func returnChapter(chapter: _Chapter?)
+	func acceptChapter(chapter: _Chapter?)
 }
 
 final class NoteRouter: NoteRoutingLogic, NoteDataPassing {
 	
 	private weak var controller: NoteController?
-	private var dataAccept: NoteDataAccept?
-	
-	var dataReturn: ReminderDataReturn?
+	private var pipe: NotePipe?
 	
 	var dataStore: NoteDataStore?
 	
-	init(controller: NoteController? = nil, dataReturn: ReminderDataReturn? = nil) {
+	init(controller: NoteController? = nil) {
 		self.controller = controller
-		self.dataReturn = dataReturn
 	}
 	
 	func returnChapter() {
 		let chapter = self.dataStore?.getChapter()
 		self.controller?.dismiss(animated: true) {
-			self.dataReturn?.returnChangeChapter(chapter: chapter)
+			self.pipe?.returnChapter(chapter: chapter)
 		}
 	}
 	
-	func setDataAccept(dataAccept: NoteDataAccept? = nil) {
-		self.dataAccept = dataAccept
+	func setPipe(pipe: NotePipe?) {
+		self.pipe = pipe
 	}
-	
-//	
-//	func setDataAccept(dataAccept: NoteDataAccept? = nil) {
-//		self.dataAccept = dataAccept
-//	}
-	
-}
-
-extension NoteRouter: NoteDataReturn {
 	
 }

@@ -13,6 +13,7 @@ protocol NoteBusinessLogic: AnyObject {
 
 protocol NoteDataStore {
 	func getChapter() -> _Chapter?
+	func setChapter(chapter: _Chapter?)
 }
 
 final class NoteInteractor: NoteBusinessLogic {
@@ -20,9 +21,8 @@ final class NoteInteractor: NoteBusinessLogic {
     private var presenter: NotePresentationLogic?
 	private var chapter: _Chapter?
     
-	init(presenter: NotePresentationLogic? = nil, chapter: _Chapter? = nil) {
+	init(presenter: NotePresentationLogic? = nil) {
         self.presenter = presenter
-		self.chapter = chapter
     }
     
 	func makeState(requst: Note.Request) {
@@ -34,6 +34,10 @@ final class NoteInteractor: NoteBusinessLogic {
 }
 
 extension NoteInteractor: NoteDataStore {
+	
+	func setChapter(chapter: _Chapter?) {
+		self.chapter = chapter
+	}
 	
 	func getChapter() -> _Chapter? {
 		return self.chapter
