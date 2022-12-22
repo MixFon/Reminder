@@ -13,9 +13,17 @@ protocol NoteShow {
 	var states: [State]? { get }
 }
 
+protocol NoteViewAction: AnyObject{
+	func closeView()
+}
+
 final class NoteView: UIView {
 
 	@IBOutlet weak var table: BaseTableView!
+	@IBOutlet weak var navigationBar: UINavigationBar!
+	@IBOutlet weak var navagationTitle: UINavigationItem!
+	
+	weak var delegate: NoteViewAction?
 	
 	struct ViewState {
 		
@@ -27,10 +35,15 @@ final class NoteView: UIView {
 		}
 	}
 	
+	@IBAction func pressBack(_ sender: UIBarButtonItem) {
+		self.delegate?.closeView()
+	}
+	
 	func configure(with data: NoteShow) {
 		if let states = data.states {
 			self.table.viewStateInput = states
 		}
+		self.navagationTitle.title = data.title
 	}
 	
 }

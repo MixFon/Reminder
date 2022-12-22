@@ -18,27 +18,32 @@ final class NoteController: UIViewController {
 	
 	private var router: (NoteRoutingLogic & NoteDataPassing)?
 	private var interactor: NoteBusinessLogic?
-	var dataReturn: ReminderDataReturn?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
     }
 	
-	init(chapter: _Chapter? = nil) {
+	init(chapter: _Chapter? = nil, dataReturn: ReminderDataReturn? = nil) {
 		super.init(nibName: nil, bundle: nil)
-		setup(chapter: chapter)
+		setup(chapter: chapter, dataReturn: dataReturn)
 	}
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
     }
+	
+	func setDataAccept(dataAccept: NoteDataAccept?) {
+		self.router?.setDataAccept(dataAccept: dataAccept)
+	}
     
-    private func setup(chapter: _Chapter? = nil) {
+    private func setup(chapter: _Chapter? = nil, dataReturn: ReminderDataReturn? = nil) {
+		self.mainView.delegate = self
+		
         let presenter = NotePresenter(controller: self)
         let interactor = NoteInteractor(presenter: presenter, chapter: chapter)
-        let router = NoteRouter(controller: self)
+        let router = NoteRouter(controller: self, dataReturn: dataReturn)
         self.interactor = interactor
         self.router = router
 		self.router?.dataStore = interactor
@@ -59,9 +64,13 @@ extension NoteController: NoteDisplayLogic {
 		case .display(let data):
 			self.mainView.configure(with: data)
 		case .present:
-			self.router?.presentController()
+			return
 		}
 	}
-	
-    
+}
+
+extension NoteController: NoteViewAction {
+	func closeView() {
+		self.router?.returnChapter()
+	}
 }

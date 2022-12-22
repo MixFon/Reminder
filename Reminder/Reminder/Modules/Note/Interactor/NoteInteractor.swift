@@ -12,10 +12,10 @@ protocol NoteBusinessLogic: AnyObject {
 }
 
 protocol NoteDataStore {
-
+	func getChapter() -> _Chapter?
 }
 
-final class NoteInteractor: NoteBusinessLogic, NoteDataStore {
+final class NoteInteractor: NoteBusinessLogic {
     
     private var presenter: NotePresentationLogic?
 	private var chapter: _Chapter?
@@ -30,5 +30,12 @@ final class NoteInteractor: NoteBusinessLogic, NoteDataStore {
 		case .start:
 			self.presenter?.buildState(response: .work(self.chapter))
 		}
+	}
+}
+
+extension NoteInteractor: NoteDataStore {
+	
+	func getChapter() -> _Chapter? {
+		return self.chapter
 	}
 }

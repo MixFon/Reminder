@@ -29,9 +29,8 @@ final class ReminderRouter: ReminderRoutingLogic, ReminderDataPassing {
     }
 	
 	func presentController(chapter: _Chapter?) {
-		let noteController = NoteController(chapter: chapter)
-		noteController.dataReturn = self
-		//self.controller?.navigationController?.pushViewController(noteController, animated: true)
+		let noteController = NoteController(chapter: chapter, dataReturn: self)
+		noteController.modalPresentationStyle = .fullScreen
 		self.controller?.present(noteController, animated: true)
 	}
 

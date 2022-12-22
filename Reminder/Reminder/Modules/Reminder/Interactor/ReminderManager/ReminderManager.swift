@@ -9,11 +9,28 @@ import Foundation
 
 final class ReminderManager {
 	
-	func getChapters() -> [_Chapter] {
-		let mock: [MockChapter] = [
-			.init(notes: ["Плавки", "Шапочка", "Носки", "Очки"] , chapter: "Бассейн"),
-			.init(notes: ["Ботинки", "Шорты", "Носки", "Ботинки"] , chapter: "Фитнес")
+	private var chapters: [_Chapter]?
+	
+	init() {
+		self.chapters = [
+			MockChapter.init(notes: ["Плавки", "Шапочка", "Носки", "Очки"] , chapter: "Бассейн"),
+			MockChapter.init(notes: ["Ботинки", "Шорты", "Носки", "Ботинки"] , chapter: "Фитнес")
 		]
-		return mock
+	}
+
+	
+	func getChapters() -> [_Chapter]? {
+		return self.chapters
+	}
+	
+	func setChapter(chapter: _Chapter?) {
+		guard let chapter else { return }
+		for (i, element) in (self.chapters ?? []).enumerated() {
+			if element.chapter == chapter.chapter {
+				self.chapters?[i].notes = chapter.notes
+				return
+			}
+		}
+		self.chapters?.append(chapter)
 	}
 }

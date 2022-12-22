@@ -15,6 +15,13 @@
 		2926C50129447AB700A6A574 /* NoteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2926C4FC29447AB700A6A574 /* NoteInteractor.swift */; };
 		2926C50829447B7000A6A574 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2926C50729447B7000A6A574 /* NoteView.swift */; };
 		2926C50A29447B7E00A6A574 /* NoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2926C50929447B7E00A6A574 /* NoteView.xib */; };
+		2939D85529536CF400631B58 /* NotionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2939D84E29536CF400631B58 /* NotionPresenter.swift */; };
+		2939D85629536CF400631B58 /* NotionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2939D84F29536CF400631B58 /* NotionRouter.swift */; };
+		2939D85729536CF400631B58 /* NotionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2939D85029536CF400631B58 /* NotionModels.swift */; };
+		2939D85829536CF400631B58 /* NotionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2939D85129536CF400631B58 /* NotionController.swift */; };
+		2939D85929536CF400631B58 /* NotionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2939D85229536CF400631B58 /* NotionInteractor.swift */; };
+		2939D85A29536CF400631B58 /* NotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2939D85329536CF400631B58 /* NotionView.swift */; };
+		2939D85B29536CF400631B58 /* NotionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2939D85429536CF400631B58 /* NotionView.xib */; };
 		2950A4E0293D036B00F66963 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2950A4DF293D036B00F66963 /* AppDelegate.swift */; };
 		2950A4E2293D036B00F66963 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2950A4E1293D036B00F66963 /* SceneDelegate.swift */; };
 		2950A4EA293D036B00F66963 /* Reminder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2950A4E8293D036B00F66963 /* Reminder.xcdatamodeld */; };
@@ -49,6 +56,13 @@
 		2926C4FC29447AB700A6A574 /* NoteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteInteractor.swift; sourceTree = "<group>"; };
 		2926C50729447B7000A6A574 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		2926C50929447B7E00A6A574 /* NoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteView.xib; sourceTree = "<group>"; };
+		2939D84E29536CF400631B58 /* NotionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionPresenter.swift; sourceTree = "<group>"; };
+		2939D84F29536CF400631B58 /* NotionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionRouter.swift; sourceTree = "<group>"; };
+		2939D85029536CF400631B58 /* NotionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionModels.swift; sourceTree = "<group>"; };
+		2939D85129536CF400631B58 /* NotionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionController.swift; sourceTree = "<group>"; };
+		2939D85229536CF400631B58 /* NotionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionInteractor.swift; sourceTree = "<group>"; };
+		2939D85329536CF400631B58 /* NotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionView.swift; sourceTree = "<group>"; };
+		2939D85429536CF400631B58 /* NotionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotionView.xib; sourceTree = "<group>"; };
 		2950A4DC293D036B00F66963 /* Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2950A4DF293D036B00F66963 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2950A4E1293D036B00F66963 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +165,60 @@
 			path = Interactor;
 			sourceTree = "<group>";
 		};
+		2939D84D29536C4F00631B58 /* Notion */ = {
+			isa = PBXGroup;
+			children = (
+				2939D86029536D5400631B58 /* View */,
+				2939D85F29536D3800631B58 /* Model */,
+				2939D85E29536D2700631B58 /* Router */,
+				2939D85D29536D1200631B58 /* Interactor */,
+				2939D85C29536D0600631B58 /* Presenter */,
+			);
+			path = Notion;
+			sourceTree = "<group>";
+		};
+		2939D85C29536D0600631B58 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				2939D84E29536CF400631B58 /* NotionPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		2939D85D29536D1200631B58 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				2939D85229536CF400631B58 /* NotionInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		2939D85E29536D2700631B58 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				2939D84F29536CF400631B58 /* NotionRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		2939D85F29536D3800631B58 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2939D85029536CF400631B58 /* NotionModels.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2939D86029536D5400631B58 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2939D85129536CF400631B58 /* NotionController.swift */,
+				2939D85329536CF400631B58 /* NotionView.swift */,
+				2939D85429536CF400631B58 /* NotionView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		2950A4D3293D036B00F66963 = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +254,7 @@
 		2950A4F6293D04A300F66963 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				2939D84D29536C4F00631B58 /* Notion */,
 				2926C4F729447A5900A6A574 /* Note */,
 				2950A4F7293D04B100F66963 /* Reminder */,
 			);
@@ -367,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				296D30D02944E69A009BC9CE /* NoteCell.xib in Resources */,
+				2939D85B29536CF400631B58 /* NotionView.xib in Resources */,
 				299F8EF529410B03001AC207 /* Colors.xcassets in Resources */,
 				2950A4EF293D036E00F66963 /* LaunchScreen.storyboard in Resources */,
 				2950A4FF293D064000F66963 /* ReminderView.xib in Resources */,
@@ -383,15 +453,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2939D85529536CF400631B58 /* NotionPresenter.swift in Sources */,
+				2939D85729536CF400631B58 /* NotionModels.swift in Sources */,
 				29931E8B293D105600B585F0 /* ReminderInteractor.swift in Sources */,
 				29BD6ECE2945CD3100DC4CDD /* ChapterHelper.swift in Sources */,
 				2926C50029447AB700A6A574 /* NoteController.swift in Sources */,
 				29931E88293D105600B585F0 /* ReminderRouter.swift in Sources */,
+				2939D85629536CF400631B58 /* NotionRouter.swift in Sources */,
+				2939D85929536CF400631B58 /* NotionInteractor.swift in Sources */,
 				29BD6ECC2945CB6B00DC4CDD /* ReminderManager.swift in Sources */,
 				29931E89293D105600B585F0 /* ReminderModels.swift in Sources */,
 				299F8EF12941045E001AC207 /* ChapterCell.swift in Sources */,
 				29931E8A293D105600B585F0 /* ReminderController.swift in Sources */,
 				2926C50129447AB700A6A574 /* NoteInteractor.swift in Sources */,
+				2939D85829536CF400631B58 /* NotionController.swift in Sources */,
 				2910881D294DE922003C20E3 /* NoteHelper.swift in Sources */,
 				296D30CE2944E67D009BC9CE /* NoteCell.swift in Sources */,
 				2926C4FF29447AB700A6A574 /* NoteModels.swift in Sources */,
@@ -403,6 +478,7 @@
 				2926C4FE29447AB700A6A574 /* NoteRouter.swift in Sources */,
 				2950A50B293D0D1900F66963 /* TableHelper.swift in Sources */,
 				2950A4E2293D036B00F66963 /* SceneDelegate.swift in Sources */,
+				2939D85A29536CF400631B58 /* NotionView.swift in Sources */,
 				2926C4FD29447AB700A6A574 /* NotePresenter.swift in Sources */,
 				2950A4EA293D036B00F66963 /* Reminder.xcdatamodeld in Sources */,
 			);
