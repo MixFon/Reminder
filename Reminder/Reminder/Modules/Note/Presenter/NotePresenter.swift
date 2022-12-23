@@ -31,6 +31,8 @@ final class NotePresenter: NotePresentationLogic {
 				states: [helper.makeState()]
 			)
 			self.controller?.displayContent(show: .display(show))
+		case .addNote:
+			self.controller?.displayContent(show: .present)
 		}
 	}
 }

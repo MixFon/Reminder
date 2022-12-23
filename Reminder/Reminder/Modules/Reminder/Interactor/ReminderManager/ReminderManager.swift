@@ -13,8 +13,24 @@ final class ReminderManager {
 	
 	init() {
 		self.chapters = [
-			MockChapter.init(notes: ["Плавки", "Шапочка", "Носки", "Очки"] , chapter: "Бассейн"),
-			MockChapter.init(notes: ["Ботинки", "Шорты", "Носки", "Ботинки"] , chapter: "Фитнес")
+			MockChapter.init(
+				notes: [
+					MockNote(title: "Плавки", image: nil),
+					MockNote(title: "Шапочка", image: nil),
+					MockNote(title: "Носки", image: nil),
+					MockNote(title: "Очки", image: nil)
+				],
+				chapter: "Бассейн"
+			),
+			MockChapter.init(
+				notes: [
+					MockNote(title: "Ботинки", image: nil),
+					MockNote(title: "Шорты", image: nil),
+					MockNote(title: "Носки", image: nil),
+					MockNote(title: "Ботинки", image: nil)
+				],
+				chapter: "Фитнес"
+			)
 		]
 	}
 

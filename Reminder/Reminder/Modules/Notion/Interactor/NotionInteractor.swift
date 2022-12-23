@@ -12,14 +12,14 @@ protocol NotionBusinessLogic: AnyObject {
 }
 
 protocol NotionDataStore {
-	func getText() -> String?
-	func setText(text: String)
+	func getNote() -> _Note?
+	func setNote(note: _Note?)
 }
 
 final class NotionInteractor: NotionBusinessLogic {
     
     private var presenter: NotionPresentationLogic?
-	private var text: String?
+	private var note: _Note?
 	
     init(presenter: NotionPresentationLogic?) {
         self.presenter = presenter
@@ -29,8 +29,10 @@ final class NotionInteractor: NotionBusinessLogic {
 		switch requst {
 		case .start:
 			self.presenter?.buildState(response: .start)
-		case .work(let text):
-			self.presenter?.buildState(response: .work(text))
+		case .work:
+			self.presenter?.buildState(response: .work(self.note))
+		case .selectNote(let note):
+			self.note = note
 		}
 	}
     
@@ -38,10 +40,11 @@ final class NotionInteractor: NotionBusinessLogic {
 
 extension NotionInteractor: NotionDataStore {
 	
-	func getText() -> String? {
-		return self.text
+	func getNote() -> _Note? {
+		return self.note
 	}
-	func setText(text: String) {
-		self.text = text
+	
+	func setNote(note: _Note?) {
+		self.note = note
 	}
 }

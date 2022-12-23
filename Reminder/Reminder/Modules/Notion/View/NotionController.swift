@@ -40,9 +40,13 @@ final class NotionController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.view = self.mainView
-		self.interactor?.makeState(requst: .start)
+		self.interactor?.makeState(requst: .work)
     }
-    
+	
+	func setPipe(pipe: NotionPipe?) {
+		self.router?.setPipe(pipe: pipe)
+		self.router?.acceptData()
+	}
 }
 
 extension NotionController: NotionDisplayLogic {

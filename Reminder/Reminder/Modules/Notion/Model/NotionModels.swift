@@ -10,12 +10,13 @@ import UIKit
 enum Notion {
     
     enum Request {
+		case work
 		case start
-		case work(String?)
+		case selectNote(_Note?)
     }
     
     enum Response {
-		case work(String?)
+		case work(_Note?)
 		case start
     }
     

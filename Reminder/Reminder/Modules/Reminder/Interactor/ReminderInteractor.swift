@@ -8,8 +8,13 @@
 import Foundation
 
 struct MockChapter: _Chapter {
-	var notes: [String]?
+	var notes: [_Note]?
 	var chapter: String?
+}
+
+struct MockNote: _Note {
+	var title: String?
+	var image: String?
 }
 
 protocol ReminderBusinessLogic: AnyObject {

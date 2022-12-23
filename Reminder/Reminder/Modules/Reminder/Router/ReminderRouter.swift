@@ -34,6 +34,7 @@ final class ReminderRouter: ReminderRoutingLogic, ReminderDataPassing {
 }
 
 extension ReminderRouter: NotePipe {
+	
 	func acceptChapter() -> _Chapter? {
 		let chapter = self.dataStore?.getSelectChapter()
 		return chapter

@@ -24,11 +24,13 @@ final class NotionPresenter: NotionPresentationLogic {
 		case .start:
 			let show = Notion.ViewModel.Show()
 			self.controller?.displayContent(show: .display(show))
-		case .work(let text):
+		case .work(let note):
+			debugPrint(calculateHeight(text: note?.title ?? "Hrllo", margin: 32))
 			let show = Notion.ViewModel.Show(
-				text: text,
+				text: note?.title,
 				title: "Заметка",
-				heightView: calculateHeight(text: text ?? "", margin: 32),
+				//heightView: calculateHeight(text: text ?? "", margin: 32),
+				heightView: 200,
 				buttonTitle: "Добавить"
 			)
 			self.controller?.displayContent(show: .display(show))

@@ -31,6 +31,7 @@ final class NoteController: UIViewController {
 	
 	func setPipe(pipe: NotePipe?) {
 		self.router?.setPipe(pipe: pipe)
+		self.router?.acceptData()
 	}
     
     private func setup() {
@@ -59,12 +60,17 @@ extension NoteController: NoteDisplayLogic {
 		case .display(let data):
 			self.mainView.configure(with: data)
 		case .present:
-			return
+			self.router?.presentAddNote()
 		}
 	}
 }
 
 extension NoteController: NoteViewAction {
+	
+	func addNote() {
+		self.interactor?.makeState(requst: .addNote)
+	}
+	
 	func closeView() {
 		self.router?.returnChapter()
 	}

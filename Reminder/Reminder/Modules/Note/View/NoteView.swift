@@ -14,6 +14,7 @@ protocol NoteShow {
 }
 
 protocol NoteViewAction: AnyObject{
+	func addNote()
 	func closeView()
 }
 
@@ -37,6 +38,10 @@ final class NoteView: UIView {
 	
 	@IBAction func pressBack(_ sender: UIBarButtonItem) {
 		self.delegate?.closeView()
+	}
+	
+	@IBAction func pressAdd(_ sender: UIBarButtonItem) {
+		self.delegate?.addNote()
 	}
 	
 	func configure(with data: NoteShow) {

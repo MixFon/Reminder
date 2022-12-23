@@ -18,8 +18,8 @@ final class NoteHelper: _TableHelper {
 	private var actions: NoteActions?
 	private var data: _Chapter?
 	
-	init(data: Any? = nil, actions: NoteActions? = nil) {
-		self.data = data as? _Chapter
+	init(data: _Chapter? = nil, actions: NoteActions? = nil) {
+		self.data = data
 		self.actions = actions
 	}
 	
@@ -31,8 +31,8 @@ final class NoteHelper: _TableHelper {
 		var elements: [Element] = []
 		for note in data?.notes ?? [] {
 			let element = NoteView.ViewState.NoteCell(
-				id: note,
-				title: note,
+				id: note.title ?? "",
+				title: note.title,
 				image: UIImage(systemName: "note.text"),
 				tintColor: .Green
 			)

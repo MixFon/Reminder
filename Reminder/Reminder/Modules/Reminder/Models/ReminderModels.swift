@@ -9,7 +9,7 @@ import UIKit
 import CoreTableView
 
 protocol _Chapter {
-	var notes: [String]? { get set }
+	var notes: [_Note]? { get set }
 	var chapter: String? { get }
 }
 
@@ -25,7 +25,7 @@ enum Reminder {
 		case work([_Chapter]?)
 		
 		struct Chapter: _Chapter {
-			var notes: [String]?
+			var notes: [_Note]?
 			var chapter: String?
 		}
     }

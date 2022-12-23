@@ -8,15 +8,27 @@
 import UIKit
 import CoreTableView
 
+protocol _Note {
+	var title: String? { get }
+	var image: String? { get }
+}
+
+struct DataNote: _Note {
+	var title: String?
+	var image: String?
+}
+
 enum Note {
     
     enum Request {
         case start
+		case addNote
     }
     
     enum Response {
 		case work(_Chapter?)
 		case start
+		case addNote
     }
     
     enum ViewModel {

@@ -36,6 +36,9 @@
                             </barButtonItem>
                             <barButtonItem key="rightBarButtonItem" systemItem="add" id="wj0-aS-17P">
                                 <color key="tintColor" name="TintPrimary"/>
+                                <connections>
+                                    <action selector="pressAdd:" destination="iN0-l3-epB" id="yav-xQ-fpU"/>
+                                </connections>
                             </barButtonItem>
                         </navigationItem>
                     </items>
