@@ -25,7 +25,7 @@ final class NotionPresenter: NotionPresentationLogic {
 			let show = Notion.ViewModel.Show()
 			self.controller?.displayContent(show: .display(show))
 		case .work(let note):
-			debugPrint(calculateHeight(text: note?.title ?? "Hrllo", margin: 16))
+			debugPrint(calculateHeight(text: note?.title ?? "Hrllo", margin: 16), note?.title)
 			let show = Notion.ViewModel.Show(
 				text: note?.title,
 				title: "Заметка",

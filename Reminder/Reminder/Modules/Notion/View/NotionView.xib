@@ -57,7 +57,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemTealColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="YZ2-Sg-rtD" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="M4t-Ig-gaE"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="YZ2-Sg-rtD" secondAttribute="trailing" constant="16" id="c3T-Il-LFR"/>
@@ -83,9 +83,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

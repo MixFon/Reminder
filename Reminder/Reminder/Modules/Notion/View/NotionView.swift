@@ -98,8 +98,11 @@ final class NotionView: UIView {
 	private func updateTopConstraint(heightView: CGFloat?) {
 		guard let heightView else { return }
 		if self.heightView.constant != heightView {
-			self.topConstraint.constant -= heightView - self.heightView.constant
-			self.heightView.constant = heightView
+			let constraint = self.topConstraint.constant - (heightView - self.heightView.constant)
+			if constraint > self.startTopConstraint {
+				self.topConstraint.constant = constraint
+				self.heightView.constant = heightView
+			}
 		}
 	}
 
@@ -116,8 +119,7 @@ final class NotionView: UIView {
 
 extension NotionView: UITextViewDelegate {
 	
-	func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+	func textViewDidChange(_ textView: UITextView) {
 		self.delegate?.textChenge(text: textView.text)
-		return true
 	}
 }
