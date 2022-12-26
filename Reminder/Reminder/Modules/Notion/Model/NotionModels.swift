@@ -12,6 +12,7 @@ enum Notion {
     enum Request {
 		case work
 		case start
+		case changeText(String?)
 		case selectNote(_Note?)
     }
     
@@ -29,6 +30,7 @@ enum Notion {
 			var title: String?
 			var heightView: CGFloat?
 			var buttonTitle: String?
+			var topConstraint: CGFloat?
 		}
     }
 }

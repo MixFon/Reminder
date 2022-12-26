@@ -21,14 +21,17 @@ final class NotionController: UIViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
-    }
+	}
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
-    }
+	}
     
     private func setup() {
+		self.mainView.delegate = self
+		self.mainView.setNotification()
+		
         let presenter = NotionPresenter(controller: self)
         let interactor = NotionInteractor(presenter: presenter)
         let router = NotionRouter(controller: self)
@@ -59,5 +62,13 @@ extension NotionController: NotionDisplayLogic {
 			self.router?.presentController()
 		}
 	}
+	
+}
+
+extension NotionController: NotionViewAction {
+	func textChenge(text: String?) {
+		self.interactor?.makeState(requst: .changeText(text))
+	}
+	
 	
 }

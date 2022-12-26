@@ -25,12 +25,12 @@ final class NotionPresenter: NotionPresentationLogic {
 			let show = Notion.ViewModel.Show()
 			self.controller?.displayContent(show: .display(show))
 		case .work(let note):
-			debugPrint(calculateHeight(text: note?.title ?? "Hrllo", margin: 32))
+			debugPrint(calculateHeight(text: note?.title ?? "Hrllo", margin: 16))
 			let show = Notion.ViewModel.Show(
 				text: note?.title,
 				title: "Заметка",
-				//heightView: calculateHeight(text: text ?? "", margin: 32),
-				heightView: 200,
+				heightView: calculateHeight(text: note?.title ?? "Hello", margin: 16),
+				//heightView: 200,
 				buttonTitle: "Добавить"
 			)
 			self.controller?.displayContent(show: .display(show))
@@ -43,19 +43,18 @@ final class NotionPresenter: NotionPresentationLogic {
 		let topMargin = 45.0
 		let bottomMargin = 74.0
 		let finalWidth = UIScreen.main.bounds.width - leftMargin - rightMargin - margin * 2
-		let titleSize = height(text: text, width: finalWidth, font: .systemFont(ofSize: 16.0))
+		let titleSize = heightUITextField(text: text, width: finalWidth, font: .systemFont(ofSize: 16.0))
 		return topMargin + titleSize + bottomMargin
 	}
 	
-	private func height(text: String, width: CGFloat, font: UIFont) -> CGFloat {
-		let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-		let boundingBox = text.boundingRect(
-			with: constraintRect,
-			options: .usesLineFragmentOrigin,
-			attributes: [NSAttributedString.Key.font: font],
-			context: nil
-		)
-		return ceil(boundingBox.height)
+	private func heightUITextField(text: String, width: CGFloat, font: UIFont) -> CGFloat {
+		let textField = UITextView(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+		textField.text = text
+		textField.font = font
+		textField.sizeToFit()
+		return textField.frame.height
 	}
 	
 }
+
+

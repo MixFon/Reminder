@@ -9,8 +9,8 @@ import UIKit
 import CoreTableView
 
 protocol _Note {
-	var title: String? { get }
-	var image: String? { get }
+	var title: String? { get set }
+	var image: String? { get set }
 }
 
 struct DataNote: _Note {

@@ -33,6 +33,9 @@ final class NotionInteractor: NotionBusinessLogic {
 			self.presenter?.buildState(response: .work(self.note))
 		case .selectNote(let note):
 			self.note = note
+		case .changeText(let text):
+			self.note?.title = text
+			self.presenter?.buildState(response: .work(self.note))
 		}
 	}
     

@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZ2-Sg-rtD">
-                    <rect key="frame" x="16" y="233.5" width="343" height="200"/>
+                    <rect key="frame" x="16" y="20" width="343" height="200"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tsk-VY-few">
                             <rect key="frame" x="16" y="16" width="311" height="21"/>
@@ -24,13 +24,6 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hWU-i2-oBT">
-                            <rect key="frame" x="16" y="45" width="311" height="81"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <color key="textColor" systemColor="labelColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                        </textView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0bv-re-get">
                             <rect key="frame" x="16" y="134" width="311" height="50"/>
                             <constraints>
@@ -39,35 +32,44 @@
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="gray" title="Button"/>
                         </button>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Yda-we-unh">
+                            <rect key="frame" x="16" y="45" width="311" height="81"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="textColor" systemColor="labelColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
                     </subviews>
                     <color key="backgroundColor" name="BackgroundSecondary"/>
                     <constraints>
-                        <constraint firstItem="0bv-re-get" firstAttribute="top" secondItem="hWU-i2-oBT" secondAttribute="bottom" constant="8" id="4mk-tw-st0"/>
-                        <constraint firstItem="hWU-i2-oBT" firstAttribute="leading" secondItem="YZ2-Sg-rtD" secondAttribute="leading" constant="16" id="6YI-VM-DfL"/>
+                        <constraint firstItem="Yda-we-unh" firstAttribute="leading" secondItem="YZ2-Sg-rtD" secondAttribute="leading" constant="16" id="2jR-Cu-J1V"/>
                         <constraint firstAttribute="trailing" secondItem="0bv-re-get" secondAttribute="trailing" constant="16" id="Ixl-44-hvp"/>
-                        <constraint firstAttribute="height" constant="200" id="Jal-9p-S9o"/>
+                        <constraint firstItem="Yda-we-unh" firstAttribute="top" secondItem="Tsk-VY-few" secondAttribute="bottom" constant="8" id="PEy-KJ-gKI"/>
                         <constraint firstItem="0bv-re-get" firstAttribute="leading" secondItem="YZ2-Sg-rtD" secondAttribute="leading" constant="16" id="Veo-ck-DtF"/>
-                        <constraint firstItem="hWU-i2-oBT" firstAttribute="top" secondItem="Tsk-VY-few" secondAttribute="bottom" constant="8" id="Ywo-XY-tBJ"/>
+                        <constraint firstItem="0bv-re-get" firstAttribute="top" secondItem="Yda-we-unh" secondAttribute="bottom" constant="8" id="ZBN-15-IQg"/>
+                        <constraint firstAttribute="trailing" secondItem="Yda-we-unh" secondAttribute="trailing" constant="16" id="Zq1-sA-pB4"/>
                         <constraint firstAttribute="trailing" secondItem="Tsk-VY-few" secondAttribute="trailing" constant="16" id="dIr-VW-HEs"/>
+                        <constraint firstAttribute="height" constant="200" id="gmX-5h-DwZ"/>
                         <constraint firstItem="Tsk-VY-few" firstAttribute="leading" secondItem="YZ2-Sg-rtD" secondAttribute="leading" constant="16" id="ugi-aP-LUL"/>
-                        <constraint firstAttribute="trailing" secondItem="hWU-i2-oBT" secondAttribute="trailing" constant="16" id="uqL-wf-2Zi"/>
                         <constraint firstItem="Tsk-VY-few" firstAttribute="top" secondItem="YZ2-Sg-rtD" secondAttribute="top" constant="16" id="zAO-dR-5sG"/>
                         <constraint firstAttribute="bottom" secondItem="0bv-re-get" secondAttribute="bottom" constant="16" id="zqE-DG-TJO"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" systemColor="systemTealColor"/>
             <constraints>
-                <constraint firstItem="YZ2-Sg-rtD" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="YYf-2s-mA3"/>
+                <constraint firstItem="YZ2-Sg-rtD" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="M4t-Ig-gaE"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="YZ2-Sg-rtD" secondAttribute="trailing" constant="16" id="c3T-Il-LFR"/>
                 <constraint firstItem="YZ2-Sg-rtD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="o2o-xi-KZk"/>
             </constraints>
             <connections>
                 <outlet property="addButton" destination="0bv-re-get" id="HO8-Nd-gz9"/>
-                <outlet property="heightView" destination="Jal-9p-S9o" id="vBb-Br-sR9"/>
-                <outlet property="textView" destination="hWU-i2-oBT" id="FlX-EK-PPL"/>
+                <outlet property="heightView" destination="gmX-5h-DwZ" id="IiZ-fF-OIf"/>
+                <outlet property="mainView" destination="YZ2-Sg-rtD" id="a69-i4-eJU"/>
+                <outlet property="textView" destination="Yda-we-unh" id="EMH-iV-hL9"/>
                 <outlet property="title" destination="Tsk-VY-few" id="YS3-7b-CfF"/>
+                <outlet property="topConstraint" destination="M4t-Ig-gaE" id="CO0-Fd-GKT"/>
             </connections>
             <point key="canvasLocation" x="44" y="20.239880059970016"/>
         </view>
@@ -81,6 +83,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
