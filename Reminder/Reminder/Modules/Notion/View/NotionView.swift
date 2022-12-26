@@ -29,6 +29,7 @@ final class NotionView: UIView {
 	@IBOutlet private weak var topConstraint: NSLayoutConstraint!
 	
 	weak var delegate: NotionViewAction?
+	private var startTopConstraint: CGFloat = 20.0
 	
 	override func awakeFromNib() {
 		self.textView.delegate = self
@@ -62,7 +63,6 @@ final class NotionView: UIView {
 	}
 	
 	@objc private func keyboardWillShow(_ notification: Notification) {
-		// Avoid to fire keyboardWillShow when the user taps textview again and again.
 		let userInfo = notification.userInfo
 		guard let endFrame = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
 		debugPrint(endFrame, endFrame.minY, endFrame.maxY)
@@ -70,6 +70,15 @@ final class NotionView: UIView {
 		let dy = endFrame.minY - self.mainView.frame.maxY
 		let dx = dy - 72
 		debugPrint(dy, dx, self.topConstraint.constant, self.heightView.constant)
+		setTopConstrains(constraint: self.topConstraint.constant + dx)
+	}
+	
+	@objc private func keyboardWillHide() {
+		setTopConstrains(constraint: self.startTopConstraint)
+	}
+	
+	private func setTopConstrains(constraint: CGFloat?) {
+		guard let constraint else { return }
 		DispatchQueue.main.async {
 			UIView.animate(
 				withDuration: 0.8,
@@ -78,26 +87,19 @@ final class NotionView: UIView {
 				initialSpringVelocity: 0,
 				options: .curveEaseInOut,
 				animations: {
-					self.topConstraint.constant += dx
+					self.topConstraint.constant = constraint
 					self.layoutIfNeeded()
 				}
 			)
 		}
 	}
 	
-	@objc private func keyboardWillHide(_ notification: Notification) {
-		DispatchQueue.main.async {
-			UIView.animate(
-				withDuration: 0.8,
-				delay: 0,
-				usingSpringWithDamping: 0.8,
-				initialSpringVelocity: 0,
-				options: .curveEaseInOut,
-				animations: {
-					self.topConstraint.constant = 16
-					self.layoutIfNeeded()
-				}
-			)
+	
+	private func updateTopConstraint(heightView: CGFloat?) {
+		guard let heightView else { return }
+		if self.heightView.constant != heightView {
+			self.topConstraint.constant -= heightView - self.heightView.constant
+			self.heightView.constant = heightView
 		}
 	}
 
@@ -107,7 +109,7 @@ final class NotionView: UIView {
 			self.title.text = data.title
 			self.textView.text = data.text
 			self.addButton.setTitle(data.buttonTitle, for: .normal)
-			self.heightView.constant = data.heightView ?? 0
+			updateTopConstraint(heightView: data.heightView)
 		}
 	}
 }
