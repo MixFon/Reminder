@@ -8,11 +8,11 @@
 import Foundation
 
 protocol NoteBusinessLogic: AnyObject {
-   func makeState(requst: Note.Request)
+   func makeState(requst: NoteModel.Request)
 }
 
 protocol NoteDataStore {
-	func getNote() -> _Note?
+	func getNotion() -> _Notion?
 	func setNote(note: _Note?)
 	func getChapter() -> _Chapter?
 	func setChapter(chapter: _Chapter?)
@@ -20,34 +20,61 @@ protocol NoteDataStore {
 
 final class NoteInteractor: NoteBusinessLogic {
     
-    private var presenter: NotePresentationLogic?
+	private var note: _Note?
+	private var notion: _Notion?
 	private var chapter: _Chapter?
-	private var selectNote: _Note?
-    
+	private var presenter: NotePresentationLogic?
+
 	init(presenter: NotePresentationLogic? = nil) {
         self.presenter = presenter
     }
     
-	func makeState(requst: Note.Request) {
+	func makeState(requst: NoteModel.Request) {
 		switch requst {
 		case .start:
 			self.presenter?.buildState(response: .work(self.chapter))
-		case .addNote:
-			self.selectNote = DataNote()
-			self.presenter?.buildState(response: .addNote)
+		case .add:
+			self.note = NoteModel.Note()
+			self.notion = NotionModel.Notion(
+				text: self.note?.text,
+				title: self.chapter?.chapter,
+				buttonTitle: "Добавить"
+			)
+		case .edit(let note):
+			self.note = note
+			self.notion = NotionModel.Notion(
+				text: self.note?.text,
+				title: self.chapter?.chapter,
+				buttonTitle: "Изменить"
+			)
+		case .delete(let note):
+			deleteNote(note: note)
+		case .changeIcon(let note):
+			changeIconNote(note: note)
 		}
+	}
+	
+	private func deleteNote(note: _Note?) {
+		self.chapter?.deleteNote(note: note)
+		makeState(requst: .start)
+	}
+	
+	private func changeIconNote(note: _Note?) {
+		self.chapter?.changeNoteIcon(note: note)
+		makeState(requst: .start)
 	}
 }
 
 extension NoteInteractor: NoteDataStore {
 	
-	func getNote() -> _Note? {
-		return self.selectNote
+	func getNotion() -> _Notion? {
+		return self.notion
 	}
 	
 	func setNote(note: _Note?) {
-		guard let note = note else { return }
-		self.chapter?.notes?.append(note)
+		self.note?.text = note?.text
+		self.chapter?.addNote(note: self.note)
+		makeState(requst: .start)
 	}
 	
 	func setChapter(chapter: _Chapter?) {

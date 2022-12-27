@@ -17,6 +17,7 @@ protocol NotionShow {
 
 protocol NotionViewAction: AnyObject{
 	func textChenge(text: String?)
+	func pressChenge()
 }
 
 final class NotionView: UIView {
@@ -40,6 +41,10 @@ final class NotionView: UIView {
 	
 	struct ViewState {
 		
+	}
+	
+	@IBAction func pressChenge(_ sender: UIButton) {
+		self.delegate?.pressChenge()
 	}
 	
 	func setNotification() {

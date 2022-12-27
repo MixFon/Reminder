@@ -33,6 +33,7 @@ final class NoteView: UIView {
 			var title: String?
 			var image: UIImage?
 			var tintColor: UIColor?
+			var onAction: Command<NoteHelper.CellAction>?
 		}
 	}
 	

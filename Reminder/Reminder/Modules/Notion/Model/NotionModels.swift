@@ -7,17 +7,30 @@
 
 import UIKit
 
-enum Notion {
-    
-    enum Request {
+protocol _Notion {
+	var text: String? { get set }
+	var title: String? { get }
+	var buttonTitle: String? { get }
+}
+
+
+enum NotionModel {
+	
+	struct Notion: _Notion {
+		var text: String?
+		var title: String?
+		var buttonTitle: String?
+	}
+	
+	enum Request {
 		case work
 		case start
 		case changeText(String?)
-		case selectNote(_Note?)
+		case selectNotion(_Notion?)
     }
     
     enum Response {
-		case work(_Note?)
+		case work(_Notion?)
 		case start
     }
     

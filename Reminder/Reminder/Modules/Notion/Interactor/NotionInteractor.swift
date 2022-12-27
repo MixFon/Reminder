@@ -8,34 +8,34 @@
 import Foundation
 
 protocol NotionBusinessLogic: AnyObject {
-	func makeState(requst: Notion.Request)
+	func makeState(requst: NotionModel.Request)
 }
 
 protocol NotionDataStore {
 	func getNote() -> _Note?
-	func setNote(note: _Note?)
+	func setNotion(notion: _Notion?)
 }
 
 final class NotionInteractor: NotionBusinessLogic {
     
     private var presenter: NotionPresentationLogic?
-	private var note: _Note?
+	private var notion: _Notion?
 	
     init(presenter: NotionPresentationLogic?) {
         self.presenter = presenter
     }
 	
-	func makeState(requst: Notion.Request) {
+	func makeState(requst: NotionModel.Request) {
 		switch requst {
 		case .start:
 			self.presenter?.buildState(response: .start)
 		case .work:
-			self.presenter?.buildState(response: .work(self.note))
-		case .selectNote(let note):
-			self.note = note
+			self.presenter?.buildState(response: .work(self.notion))
+		case .selectNotion(let notion):
+			self.notion = notion
 		case .changeText(let text):
-			self.note?.title = text
-			self.presenter?.buildState(response: .work(self.note))
+			self.notion?.text = text
+			self.presenter?.buildState(response: .work(self.notion))
 		}
 	}
     
@@ -44,10 +44,10 @@ final class NotionInteractor: NotionBusinessLogic {
 extension NotionInteractor: NotionDataStore {
 	
 	func getNote() -> _Note? {
-		return self.note
+		return NoteModel.Note(text: self.notion?.text, image: nil)
 	}
 	
-	func setNote(note: _Note?) {
-		self.note = note
+	func setNotion(notion: _Notion?) {
+		self.notion = notion
 	}
 }

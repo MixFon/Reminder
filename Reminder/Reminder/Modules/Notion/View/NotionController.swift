@@ -9,7 +9,7 @@ import UIKit
 import CoreExtensions
 
 protocol NotionDisplayLogic: AnyObject {
-	func displayContent(show: Notion.ViewModel)
+	func displayContent(show: NotionModel.ViewModel)
 }
 
 final class NotionController: UIViewController {
@@ -54,7 +54,7 @@ final class NotionController: UIViewController {
 
 extension NotionController: NotionDisplayLogic {
     
-	func displayContent(show: Notion.ViewModel) {
+	func displayContent(show: NotionModel.ViewModel) {
 		switch show {
 		case .display(let data):
 			self.mainView.configure(with: data)
@@ -66,6 +66,11 @@ extension NotionController: NotionDisplayLogic {
 }
 
 extension NotionController: NotionViewAction {
+	
+	func pressChenge() {
+		self.router?.pressChenge()
+	}
+	
 	func textChenge(text: String?) {
 		self.interactor?.makeState(requst: .changeText(text))
 	}

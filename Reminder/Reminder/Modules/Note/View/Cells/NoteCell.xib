@@ -24,7 +24,7 @@
                                 <constraint firstAttribute="height" constant="25" id="WZo-a5-IrL"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fxn-fa-GxM">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fxn-fa-GxM">
                             <rect key="frame" x="55" y="22" width="320" height="17"/>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                             <color key="textColor" name="BackgroundPrimary"/>

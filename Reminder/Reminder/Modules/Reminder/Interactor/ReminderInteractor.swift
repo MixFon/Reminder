@@ -7,18 +7,8 @@
 
 import Foundation
 
-struct MockChapter: _Chapter {
-	var notes: [_Note]?
-	var chapter: String?
-}
-
-struct MockNote: _Note {
-	var title: String?
-	var image: String?
-}
-
 protocol ReminderBusinessLogic: AnyObject {
-	func makeState(requst: Reminder.Request)
+	func makeState(requst: ReminderModel.Request)
 }
 
 protocol ReminderDataStore {
@@ -37,7 +27,7 @@ final class ReminderInteractor: ReminderBusinessLogic, ReminderDataStore {
 		self.presenter = presenter
 	}
 	
-	func makeState(requst: Reminder.Request) {
+	func makeState(requst: ReminderModel.Request) {
 		switch requst {
 		case .start:
 			let chapters = self.manager.getChapters()

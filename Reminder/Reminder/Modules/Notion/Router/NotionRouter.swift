@@ -11,6 +11,7 @@ protocol NotionRoutingLogic {
 	func acceptData()
 	func setPipe(pipe: NotionPipe?)
 	func presentController()
+	func pressChenge()
 }
 
 protocol NotionDataPassing {
@@ -20,7 +21,8 @@ protocol NotionDataPassing {
 /// Протокол для передачи данных между роутерами.
 /// Подписывается роутер из которого передаются данные
 protocol NotionPipe {
-	func acceptData() -> _Note?
+	func acceptData() -> _Notion?
+	func returnNote(note: _Note?)
 }
 
 final class NotionRouter: NotionRoutingLogic, NotionDataPassing {
@@ -43,8 +45,15 @@ final class NotionRouter: NotionRoutingLogic, NotionDataPassing {
 	}
 	
 	func acceptData() {
-		let note = self.pipe?.acceptData()
-		self.dataStore?.setNote(note: note)
+		let notion = self.pipe?.acceptData()
+		self.dataStore?.setNotion(notion: notion)
+	}
+	
+	func pressChenge() {
+		self.controller?.dismiss(animated: true) {
+			let note = self.dataStore?.getNote()
+			self.pipe?.returnNote(note: note)
+		}
 	}
 	
 }

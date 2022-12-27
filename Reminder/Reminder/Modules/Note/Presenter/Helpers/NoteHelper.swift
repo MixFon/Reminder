@@ -10,7 +10,9 @@ import Foundation
 import CoreTableView
 
 protocol NoteActions {
-	
+	func editNote(note: _Note?)
+	func changeIcon(note: _Note?)
+	func deleteNote(note: _Note?)
 }
 
 final class NoteHelper: _TableHelper {
@@ -27,14 +29,30 @@ final class NoteHelper: _TableHelper {
 		return nil
 	}
 	
+	enum CellAction {
+		case edit
+		case delete
+		case chengeIcon
+	}
+	
 	func makeElements() -> [Element] {
 		var elements: [Element] = []
 		for note in data?.notes ?? [] {
 			let element = NoteView.ViewState.NoteCell(
-				id: note.title ?? "",
-				title: note.title,
-				image: UIImage(systemName: "note.text"),
-				tintColor: .Green
+				id: String(note.index ?? 0),
+				title: note.text,
+				image: UIImage(systemName: note.image?.getStingIcon() ?? "questionmark.circle.fill"),
+				tintColor: note.image?.getColorIcon(),
+				onAction: Command { action in
+					switch action {
+					case .delete:
+						self.actions?.deleteNote(note: note)
+					case .chengeIcon:
+						self.actions?.changeIcon(note: note)
+					case .edit:
+						self.actions?.editNote(note: note)
+					}
+				}
 			)
 			elements.append(element.toElement())
 		}

@@ -13,27 +13,35 @@ final class ReminderManager {
 	
 	init() {
 		self.chapters = [
-			MockChapter.init(
+			ReminderModel.Chapter.init(
 				notes: [
-					MockNote(title: "Плавки", image: nil),
-					MockNote(title: "Шапочка", image: nil),
-					MockNote(title: "Носки", image: nil),
-					MockNote(title: "Очки", image: nil)
+					NoteModel.Note(text: "Плавки", image: .off),
+					NoteModel.Note(text: "Шапочка", image: .off),
+					NoteModel.Note(text: "Носки", image: .off),
+					NoteModel.Note(text: "Очки", image: .off)
 				],
 				chapter: "Бассейн"
 			),
-			MockChapter.init(
+			ReminderModel.Chapter.init(
 				notes: [
-					MockNote(title: "Ботинки", image: nil),
-					MockNote(title: "Шорты", image: nil),
-					MockNote(title: "Носки", image: nil),
-					MockNote(title: "Ботинки", image: nil)
+					NoteModel.Note(text: "Ботинки", image: .off),
+					NoteModel.Note(text: "Шорты", image: .off),
+					NoteModel.Note(text: "Носки", image: .off),
+					NoteModel.Note(text: "Ботинки", image: .off)
 				],
 				chapter: "Фитнес"
 			)
 		]
+		updateChapters()
 	}
-
+	
+	private func updateChapters() {
+		for index in (self.chapters ?? []).indices {
+			self.chapters?[index].updateIndexes()
+			debugPrint(self.chapters?[index])
+		}
+	}
+	
 	
 	func getChapters() -> [_Chapter]? {
 		return self.chapters

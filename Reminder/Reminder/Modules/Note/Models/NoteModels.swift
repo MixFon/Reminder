@@ -8,32 +8,73 @@
 import UIKit
 import CoreTableView
 
+typealias NoteIndex = Range<Array<_Note>.Index>.Element
+
 protocol _Note {
-	var title: String? { get set }
-	var image: String? { get set }
+	var text: String? { get set }
+	var index: NoteIndex? { get set }
+	var image: IconNote? { get set }
 }
 
-struct DataNote: _Note {
-	var title: String?
-	var image: String?
+enum IconNote {
+	case off
+	case on
+	
+	mutating func opositeImage() {
+		switch self {
+		case .off:
+			self = .on
+		case .on:
+			self = .off
+		}
+	}
+	
+	func getStingIcon() -> String {
+		switch self {
+		case .off:
+			return "minus.circle.fill"
+		case .on:
+			return "checkmark.circle.fill"
+		}
+	}
+	
+	func getColorIcon() -> UIColor {
+		switch self {
+		case .off:
+			return .Danger
+		case .on:
+			return .Green
+		}
+	}
 }
 
-enum Note {
+enum NoteModel {
+	
+	struct Note: _Note {
+		var text: String?
+		var index: NoteIndex?
+		var image: IconNote? = .off
+	}
     
     enum Request {
+		case add
+		case edit(_Note?)
         case start
-		case addNote
+		case delete(_Note?)
+		case changeIcon(_Note?)
     }
     
     enum Response {
 		case work(_Chapter?)
 		case start
-		case addNote
     }
     
     enum ViewModel {
+		case edit(_Note?)
+		case delete(_Note?)
         case display(NoteShow)
-		case present
+		case changeIcon(_Note?)
+		case presentNotion
 		
 		struct Show: NoteShow {
 			var title: String?

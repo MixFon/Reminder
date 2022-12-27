@@ -8,7 +8,7 @@
 import UIKit
 
 protocol NotionPresentationLogic: AnyObject {
-	func buildState(response: Notion.Response)
+	func buildState(response: NotionModel.Response)
 }
 
 final class NotionPresenter: NotionPresentationLogic {
@@ -19,19 +19,17 @@ final class NotionPresenter: NotionPresentationLogic {
         self.controller = controller
     }
     
-	func buildState(response: Notion.Response) {
+	func buildState(response: NotionModel.Response) {
 		switch response {
 		case .start:
-			let show = Notion.ViewModel.Show()
+			let show = NotionModel.ViewModel.Show()
 			self.controller?.displayContent(show: .display(show))
-		case .work(let note):
-			debugPrint(calculateHeight(text: note?.title ?? "Hrllo", margin: 16), note?.title)
-			let show = Notion.ViewModel.Show(
-				text: note?.title,
-				title: "Заметка",
-				heightView: calculateHeight(text: note?.title ?? "Hello", margin: 16),
-				//heightView: 200,
-				buttonTitle: "Добавить"
+		case .work(let notion):
+			let show = NotionModel.ViewModel.Show(
+				text: notion?.text,
+				title: notion?.title,
+				heightView: calculateHeight(text: notion?.text ?? "", margin: 16),
+				buttonTitle: notion?.buttonTitle
 			)
 			self.controller?.displayContent(show: .display(show))
 		}

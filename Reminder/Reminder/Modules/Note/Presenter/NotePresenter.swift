@@ -8,7 +8,7 @@
 import UIKit
 
 protocol NotePresentationLogic: AnyObject {
-	func buildState(response: Note.Response)
+	func buildState(response: NoteModel.Response)
 }
 
 final class NotePresenter: NotePresentationLogic {
@@ -19,24 +19,33 @@ final class NotePresenter: NotePresentationLogic {
         self.controller = controller
     }
     
-	func buildState(response: Note.Response) {
+	func buildState(response: NoteModel.Response) {
 		switch response {
 		case .start:
-			let show = Note.ViewModel.Show()
+			let show = NoteModel.ViewModel.Show()
 			self.controller?.displayContent(show: .display(show))
 		case .work(let chapter):
 			let helper = NoteHelper(data: chapter, actions: self)
-			let show = Note.ViewModel.Show(
+			let show = NoteModel.ViewModel.Show(
 				title: chapter?.chapter,
 				states: [helper.makeState()]
 			)
 			self.controller?.displayContent(show: .display(show))
-		case .addNote:
-			self.controller?.displayContent(show: .present)
 		}
 	}
 }
 
 extension NotePresenter: NoteActions {
+	func editNote(note: _Note?) {
+		self.controller?.displayContent(show: .edit(note))
+	}
+	
+	func changeIcon(note: _Note?) {
+		self.controller?.displayContent(show: .changeIcon(note))
+	}
+	
+	func deleteNote(note: _Note?) {
+		self.controller?.displayContent(show: .delete(note))
+	}
 	
 }

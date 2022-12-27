@@ -9,7 +9,7 @@ import UIKit
 import CoreExtensions
 
 protocol NoteDisplayLogic: AnyObject {
-	func displayContent(show: Note.ViewModel)
+	func displayContent(show: NoteModel.ViewModel)
 }
 
 final class NoteController: UIViewController {
@@ -50,17 +50,23 @@ final class NoteController: UIViewController {
 		self.view = self.mainView
 		self.interactor?.makeState(requst: .start)
     }
-    
 }
 
 extension NoteController: NoteDisplayLogic {
 	
-	func displayContent(show: Note.ViewModel) {
+	func displayContent(show: NoteModel.ViewModel) {
 		switch show {
 		case .display(let data):
 			self.mainView.configure(with: data)
-		case .present:
-			self.router?.presentAddNote()
+		case .presentNotion:
+			self.router?.presentNotion()
+		case .delete(let note):
+			self.interactor?.makeState(requst: .delete(note))
+		case .changeIcon(let note):
+			self.interactor?.makeState(requst: .changeIcon(note))
+		case .edit(let note):
+			self.interactor?.makeState(requst: .edit(note))
+			self.router?.presentNotion()
 		}
 	}
 }
@@ -68,7 +74,8 @@ extension NoteController: NoteDisplayLogic {
 extension NoteController: NoteViewAction {
 	
 	func addNote() {
-		self.interactor?.makeState(requst: .addNote)
+		self.interactor?.makeState(requst: .add)
+		self.router?.presentNotion()
 	}
 	
 	func closeView() {

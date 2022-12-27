@@ -31,6 +31,9 @@
                             </constraints>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="gray" title="Button"/>
+                            <connections>
+                                <action selector="pressChenge:" destination="iN0-l3-epB" eventType="touchUpInside" id="4Ai-T9-vTr"/>
+                            </connections>
                         </button>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Yda-we-unh">
                             <rect key="frame" x="16" y="45" width="311" height="81"/>

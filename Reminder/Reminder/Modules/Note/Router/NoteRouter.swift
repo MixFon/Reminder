@@ -11,7 +11,7 @@ protocol NoteRoutingLogic {
 	func setPipe(pipe: NotePipe?)
 	func acceptData()
 	func returnChapter()
-	func presentAddNote()
+	func presentNotion()
 }
 
 protocol NoteDataPassing {
@@ -52,17 +52,20 @@ final class NoteRouter: NoteRoutingLogic, NoteDataPassing {
 		self.dataStore?.setChapter(chapter: chapter)
 	}
 	
-	func presentAddNote() {
+	func presentNotion() {
 		let notion = NotionController()
 		notion.setPipe(pipe: self)
 		self.controller?.present(notion, animated: true)
 	}
-	
 }
 
 extension NoteRouter: NotionPipe {
 	
-	func acceptData() -> _Note? {
-		return self.dataStore?.getNote()
+	func acceptData() -> _Notion? {
+		return self.dataStore?.getNotion()
+	}
+	
+	func returnNote(note: _Note?) {
+		self.dataStore?.setNote(note: note)
 	}
 }

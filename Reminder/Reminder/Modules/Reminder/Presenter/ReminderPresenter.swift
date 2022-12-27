@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ReminderPresentationLogic: AnyObject {
-	func buildState(response: Reminder.Response)
+	func buildState(response: ReminderModel.Response)
 }
 
 final class ReminderPresenter: ReminderPresentationLogic {
@@ -19,15 +19,15 @@ final class ReminderPresenter: ReminderPresentationLogic {
         self.controller = controller
     }
     
-	func buildState(response: Reminder.Response) {
+	func buildState(response: ReminderModel.Response) {
 		switch response {
 		case .start:
-			let show = Reminder.ViewModel.Show()
+			let show = ReminderModel.ViewModel.Show()
 			self.controller?.displayContent(show: .display(show))
 		case .work(let chapters):
 			let chapterHelper = ChapterHelper(chapters: chapters, actions: self)
 			let state = chapterHelper.makeState()
-			let show = Reminder.ViewModel.Show(states: [state])
+			let show = ReminderModel.ViewModel.Show(states: [state])
 			self.controller?.displayContent(show: .display(show))
 		}
 	}
