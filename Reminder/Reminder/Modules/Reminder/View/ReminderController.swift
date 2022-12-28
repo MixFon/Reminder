@@ -29,6 +29,8 @@ final class ReminderController: UIViewController {
     }
     
     private func setup() {
+		self.mainView.delegate = self
+		
         let presenter = ReminderPresenter(controller: self)
         let interactor = ReminderInteractor(presenter: presenter)
         let router = ReminderRouter(controller: self)
@@ -44,6 +46,7 @@ final class ReminderController: UIViewController {
 }
 
 extension ReminderController: ReminderDisplayLogic {
+	
 	func displayContent(show: ReminderModel.ViewModel) {
 		switch show {
 		case .display(let data):
@@ -52,5 +55,13 @@ extension ReminderController: ReminderDisplayLogic {
 			self.interactor?.makeState(requst: .selectChapter(chapter))
 			self.router?.presentController()
 		}
+	}
+}
+
+extension ReminderController: ReminderViewAction {
+	
+	func addNewChapter() {
+		self.interactor?.makeState(requst: .add)
+		self.router?.presentNotionController()
 	}
 }

@@ -14,10 +14,6 @@ protocol NoteRoutingLogic {
 	func presentNotion()
 }
 
-protocol NoteDataPassing {
-  var dataStore: NoteDataStore? { get set }
-}
-
 /// Протокол для передачи данных между роутерами.
 /// Подписывается роутер из которого передаются данные
 protocol NotePipe {
@@ -25,12 +21,12 @@ protocol NotePipe {
 	func acceptChapter() -> _Chapter?
 }
 
-final class NoteRouter: NoteRoutingLogic, NoteDataPassing {
+final class NoteRouter: NoteRoutingLogic {
 	
 	private weak var controller: NoteController?
 	private var pipe: NotePipe?
 	
-	var dataStore: NoteDataStore?
+	var dataStore: (NoteDataStore & NotionPipe)?
 	
 	init(controller: NoteController? = nil) {
 		self.controller = controller
@@ -54,18 +50,7 @@ final class NoteRouter: NoteRoutingLogic, NoteDataPassing {
 	
 	func presentNotion() {
 		let notion = NotionController()
-		notion.setPipe(pipe: self)
+		notion.setPipe(pipe: self.dataStore)
 		self.controller?.present(notion, animated: true)
-	}
-}
-
-extension NoteRouter: NotionPipe {
-	
-	func acceptData() -> _Notion? {
-		return self.dataStore?.getNotion()
-	}
-	
-	func returnNotion(notion: _Notion?) {
-		self.dataStore?.setNotion(notion: notion)
 	}
 }

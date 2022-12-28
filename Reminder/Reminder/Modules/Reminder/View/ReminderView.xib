@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,31 +14,52 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OkK-xg-8tw">
+                    <rect key="frame" x="0.0" y="47" width="375" height="44"/>
+                    <color key="barTintColor" name="BackgroundSecondary"/>
+                    <items>
+                        <navigationItem title="Title" id="sdv-DP-dDd">
+                            <barButtonItem key="rightBarButtonItem" systemItem="add" id="sAe-No-Ask">
+                                <color key="tintColor" name="TintPrimary"/>
+                                <connections>
+                                    <action selector="pressAdd:" destination="iN0-l3-epB" id="wV8-iR-Qow"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="DLi-WY-2tp" customClass="BaseTableView" customModule="CoreTableView">
-                    <rect key="frame" x="0.0" y="47" width="375" height="731"/>
+                    <rect key="frame" x="0.0" y="91" width="375" height="687"/>
                     <color key="backgroundColor" name="BackgroundPrimary"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="BackgroundSecondary"/>
             <constraints>
-                <constraint firstItem="DLi-WY-2tp" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="0mA-5F-gbC"/>
+                <constraint firstItem="OkK-xg-8tw" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="8f1-Nk-in7"/>
+                <constraint firstItem="DLi-WY-2tp" firstAttribute="top" secondItem="OkK-xg-8tw" secondAttribute="bottom" id="Htt-kj-SAw"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="DLi-WY-2tp" secondAttribute="bottom" id="QRb-27-01z"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="DLi-WY-2tp" secondAttribute="trailing" id="lLV-Og-V8K"/>
                 <constraint firstItem="DLi-WY-2tp" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="oN2-H0-LQF"/>
+                <constraint firstItem="OkK-xg-8tw" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="sqg-3I-LpX"/>
+                <constraint firstItem="OkK-xg-8tw" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="uJx-yw-b18"/>
             </constraints>
             <connections>
                 <outlet property="table" destination="DLi-WY-2tp" id="erp-UQ-Gxk"/>
+                <outlet property="title" destination="sdv-DP-dDd" id="Rvb-JM-TqL"/>
             </connections>
-            <point key="canvasLocation" x="138" y="20"/>
+            <point key="canvasLocation" x="136.80000000000001" y="19.95073891625616"/>
         </view>
     </objects>
     <resources>
         <namedColor name="BackgroundPrimary">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="BackgroundSecondary">
+            <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TintPrimary">
+            <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

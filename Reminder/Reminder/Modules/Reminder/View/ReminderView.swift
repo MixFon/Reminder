@@ -9,12 +9,24 @@ import UIKit
 import CoreTableView
 
 protocol ReminderShow {
+	var title: String? { get }
 	var states: [State]? { get }
+}
+
+protocol ReminderViewAction: AnyObject{
+	func addNewChapter()
 }
 
 final class ReminderView: UIView {
 	
-	@IBOutlet weak var table: BaseTableView!
+	@IBOutlet private weak var table: BaseTableView!
+	@IBOutlet private weak var title: UINavigationItem!
+	
+	weak var delegate: ReminderViewAction?
+	
+	@IBAction func pressAdd(_ sender: UIBarButtonItem) {
+		self.delegate?.addNewChapter()
+	}
 	
 	struct ViewState {
 		
@@ -28,6 +40,7 @@ final class ReminderView: UIView {
 	func configure(with data: ReminderShow?) {
 		if let states = data?.states {
 			self.table.viewStateInput = states
+			self.title.title = data?.title
 		}
 	}
 }

@@ -90,6 +90,7 @@ enum ReminderModel {
 		case present(_Chapter)
 		
 		struct Show: ReminderShow {
+			var title: String?
 			var states: [State]?
 		}
     }

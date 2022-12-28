@@ -14,7 +14,7 @@ protocol NotionDisplayLogic: AnyObject {
 
 final class NotionController: UIViewController {
 	
-	private var router: (NotionRoutingLogic & NotionDataPassing)?
+	private var router: NotionRoutingLogic?
 	private let mainView = NotionView.loadFromNib()
 	private var interactor: NotionBusinessLogic?
     
@@ -35,9 +35,9 @@ final class NotionController: UIViewController {
         let presenter = NotionPresenter(controller: self)
         let interactor = NotionInteractor(presenter: presenter)
         let router = NotionRouter(controller: self)
+		router.dataStore = interactor
         self.interactor = interactor
         self.router = router
-		router.dataStore = interactor
     }
     
     override func viewDidLoad() {
@@ -74,6 +74,4 @@ extension NotionController: NotionViewAction {
 	func textChenge(text: String?) {
 		self.interactor?.makeState(requst: .changeText(text))
 	}
-	
-	
 }

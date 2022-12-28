@@ -12,14 +12,10 @@ protocol ReminderRoutingLogic {
 	func presentController()
 }
 
-//protocol ReminderDataPassing {
-//	var dataStore: (ReminderDataStore & NotionPipe)? { get set }
-//}
-
 final class ReminderRouter: ReminderRoutingLogic {
   
     private weak var controller: ReminderController?
-	var dataStore: (ReminderDataStore & NotionPipe)?
+	var dataStore: (ReminderDataStore & NotionPipe & NotePipe)?
   
     init(controller: ReminderController? = nil) {
         self.controller = controller
@@ -28,27 +24,14 @@ final class ReminderRouter: ReminderRoutingLogic {
 	func presentController() {
 		let noteController = NoteController()
 		noteController.modalPresentationStyle = .fullScreen
-		noteController.setPipe(pipe: self)
+		noteController.setPipe(pipe: self.dataStore)
 		self.controller?.present(noteController, animated: true)
 	}
 	
 	func presentNotionController() {
 		let notion = NotionController()
-		notion.setPipe(pipe: dataStore)
+		notion.setPipe(pipe: self.dataStore)
 		self.controller?.present(notion, animated: true)
 	}
-
 }
 
-
-extension ReminderRouter: NotePipe {
-	
-	func acceptChapter() -> _Chapter? {
-		let chapter = self.dataStore?.getSelectChapter()
-		return chapter
-	}
-	
-	func returnChapter(chapter: _Chapter?) {
-		self.dataStore?.setChapter(chapter: chapter)
-	}
-}

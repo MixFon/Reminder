@@ -14,10 +14,6 @@ protocol NotionRoutingLogic {
 	func pressChenge()
 }
 
-protocol NotionDataPassing {
-	var dataStore: NotionDataStore? { get set }
-}
-
 /// Протокол для передачи данных между роутерами.
 /// Подписывается роутер из которого передаются данные
 protocol NotionPipe {
@@ -25,7 +21,7 @@ protocol NotionPipe {
 	func returnNotion(notion: _Notion?)
 }
 
-final class NotionRouter: NotionRoutingLogic, NotionDataPassing {
+final class NotionRouter: NotionRoutingLogic {
 	
 	private weak var controller: NotionController?
 	private var pipe: NotionPipe?

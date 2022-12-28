@@ -12,7 +12,6 @@ protocol ReminderBusinessLogic: AnyObject {
 }
 
 protocol ReminderDataStore {
-	func getSelectChapter() -> _Chapter?
 	func setChapter(chapter: _Chapter?)
 	func getChapters() -> [_Chapter]?
 }
@@ -60,13 +59,10 @@ final class ReminderInteractor: ReminderBusinessLogic, ReminderDataStore {
 		self.manager.setChapter(chapter: chapter)
 		makeState(requst: .start)
 	}
-	
-	func getSelectChapter() -> _Chapter? {
-		return self.selectChapter
-	}
+
 }
 
-
+// MARK: NotionPipe
 extension ReminderInteractor: NotionPipe {
 	
 	func acceptData() -> _Notion? {
@@ -77,5 +73,17 @@ extension ReminderInteractor: NotionPipe {
 		self.notion = notion
 		self.selectChapter?.text = notion?.text
 		setChapter(chapter: self.selectChapter)
+	}
+}
+
+// MARK: NotePipe
+extension ReminderInteractor: NotePipe {
+	
+	func acceptChapter() -> _Chapter? {
+		return self.selectChapter
+	}
+	
+	func returnChapter(chapter: _Chapter?) {
+		setChapter(chapter: chapter)
 	}
 }

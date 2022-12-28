@@ -38,7 +38,6 @@ final class ReminderManager {
 	private func updateChapters() {
 		for index in (self.chapters ?? []).indices {
 			self.chapters?[index].updateIndexes()
-			debugPrint(self.chapters?[index])
 		}
 	}
 	

@@ -16,7 +16,7 @@ final class NoteController: UIViewController {
     
 	private let mainView = NoteView.loadFromNib()
 	
-	private var router: (NoteRoutingLogic & NoteDataPassing)?
+	private var router: NoteRoutingLogic?
 	private var interactor: NoteBusinessLogic?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -40,9 +40,9 @@ final class NoteController: UIViewController {
         let presenter = NotePresenter(controller: self)
         let interactor = NoteInteractor(presenter: presenter)
         let router = NoteRouter(controller: self)
+		router.dataStore = interactor
+		self.router = router
         self.interactor = interactor
-        self.router = router
-		self.router?.dataStore = interactor
     }
     
     override func viewDidLoad() {

@@ -12,8 +12,6 @@ protocol NoteBusinessLogic: AnyObject {
 }
 
 protocol NoteDataStore {
-	func getNotion() -> _Notion?
-	func setNotion(notion: _Notion?)
 	func getChapter() -> _Chapter?
 	func setChapter(chapter: _Chapter?)
 }
@@ -66,22 +64,25 @@ final class NoteInteractor: NoteBusinessLogic {
 }
 
 extension NoteInteractor: NoteDataStore {
-	
-	func getNotion() -> _Notion? {
-		return self.notion
-	}
 
-	func setNotion(notion: _Notion?) {
-		self.note?.text = notion?.text
-		self.chapter?.addNote(note: self.note)
-		makeState(requst: .start)
-	}
-	
 	func setChapter(chapter: _Chapter?) {
 		self.chapter = chapter
 	}
 	
 	func getChapter() -> _Chapter? {
 		return self.chapter
+	}
+}
+
+extension NoteInteractor: NotionPipe {
+	
+	func acceptData() -> _Notion? {
+		return self.notion
+	}
+	
+	func returnNotion(notion: _Notion?) {
+		self.note?.text = notion?.text
+		self.chapter?.addNote(note: self.note)
+		makeState(requst: .start)
 	}
 }
