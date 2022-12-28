@@ -32,8 +32,8 @@ final class ChapterHelper: _TableHelper {
 		var elements: [Element] = []
 		for chapter in self.chapters ?? [] {
 			let dataChapters = ReminderView.ViewState.Chapter(
-				id: chapter.chapter ?? "",
-				title: chapter.chapter,
+				id: "\(chapter.hashValue)",
+				title: chapter.text,
 				onItemSelect: Command {
 					self.actions?.selectChapter(chapter: chapter)
 				}

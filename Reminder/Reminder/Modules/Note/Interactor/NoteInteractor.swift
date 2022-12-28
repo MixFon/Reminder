@@ -13,7 +13,7 @@ protocol NoteBusinessLogic: AnyObject {
 
 protocol NoteDataStore {
 	func getNotion() -> _Notion?
-	func setNote(note: _Note?)
+	func setNotion(notion: _Notion?)
 	func getChapter() -> _Chapter?
 	func setChapter(chapter: _Chapter?)
 }
@@ -37,14 +37,14 @@ final class NoteInteractor: NoteBusinessLogic {
 			self.note = NoteModel.Note()
 			self.notion = NotionModel.Notion(
 				text: self.note?.text,
-				title: self.chapter?.chapter,
+				title: self.chapter?.text,
 				buttonTitle: "Добавить"
 			)
 		case .edit(let note):
 			self.note = note
 			self.notion = NotionModel.Notion(
 				text: self.note?.text,
-				title: self.chapter?.chapter,
+				title: self.chapter?.text,
 				buttonTitle: "Изменить"
 			)
 		case .delete(let note):
@@ -70,9 +70,9 @@ extension NoteInteractor: NoteDataStore {
 	func getNotion() -> _Notion? {
 		return self.notion
 	}
-	
-	func setNote(note: _Note?) {
-		self.note?.text = note?.text
+
+	func setNotion(notion: _Notion?) {
+		self.note?.text = notion?.text
 		self.chapter?.addNote(note: self.note)
 		makeState(requst: .start)
 	}

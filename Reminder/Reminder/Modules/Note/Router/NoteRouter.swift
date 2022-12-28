@@ -65,7 +65,7 @@ extension NoteRouter: NotionPipe {
 		return self.dataStore?.getNotion()
 	}
 	
-	func returnNote(note: _Note?) {
-		self.dataStore?.setNote(note: note)
+	func returnNotion(notion: _Notion?) {
+		self.dataStore?.setNotion(notion: notion)
 	}
 }

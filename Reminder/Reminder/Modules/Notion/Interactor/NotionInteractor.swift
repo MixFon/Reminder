@@ -12,7 +12,7 @@ protocol NotionBusinessLogic: AnyObject {
 }
 
 protocol NotionDataStore {
-	func getNote() -> _Note?
+	func getNotion() -> _Notion?
 	func setNotion(notion: _Notion?)
 }
 
@@ -43,8 +43,8 @@ final class NotionInteractor: NotionBusinessLogic {
 
 extension NotionInteractor: NotionDataStore {
 	
-	func getNote() -> _Note? {
-		return NoteModel.Note(text: self.notion?.text, image: nil)
+	func getNotion() -> _Notion? {
+		return self.notion
 	}
 	
 	func setNotion(notion: _Notion?) {

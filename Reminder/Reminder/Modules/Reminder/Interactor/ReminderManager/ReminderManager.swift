@@ -20,7 +20,7 @@ final class ReminderManager {
 					NoteModel.Note(text: "Носки", image: .off),
 					NoteModel.Note(text: "Очки", image: .off)
 				],
-				chapter: "Бассейн"
+				text: "Бассейн"
 			),
 			ReminderModel.Chapter.init(
 				notes: [
@@ -29,7 +29,7 @@ final class ReminderManager {
 					NoteModel.Note(text: "Носки", image: .off),
 					NoteModel.Note(text: "Ботинки", image: .off)
 				],
-				chapter: "Фитнес"
+				text: "Фитнес"
 			)
 		]
 		updateChapters()
@@ -49,8 +49,9 @@ final class ReminderManager {
 	
 	func setChapter(chapter: _Chapter?) {
 		guard let chapter else { return }
+		debugPrint(chapter)
 		for (i, element) in (self.chapters ?? []).enumerated() {
-			if element.chapter == chapter.chapter {
+			if element.text == chapter.text {
 				self.chapters?[i].notes = chapter.notes
 				return
 			}

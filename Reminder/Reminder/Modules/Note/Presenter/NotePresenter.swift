@@ -27,7 +27,7 @@ final class NotePresenter: NotePresentationLogic {
 		case .work(let chapter):
 			let helper = NoteHelper(data: chapter, actions: self)
 			let show = NoteModel.ViewModel.Show(
-				title: chapter?.chapter,
+				title: chapter?.text,
 				states: [helper.makeState()]
 			)
 			self.controller?.displayContent(show: .display(show))

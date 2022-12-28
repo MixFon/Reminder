@@ -8,17 +8,18 @@
 import UIKit
 
 protocol ReminderRoutingLogic {
+	func presentNotionController()
 	func presentController()
 }
 
-protocol ReminderDataPassing {
-	var dataStore: ReminderDataStore? { get set }
-}
+//protocol ReminderDataPassing {
+//	var dataStore: (ReminderDataStore & NotionPipe)? { get set }
+//}
 
-final class ReminderRouter: ReminderRoutingLogic, ReminderDataPassing {
+final class ReminderRouter: ReminderRoutingLogic {
   
     private weak var controller: ReminderController?
-	var dataStore: ReminderDataStore?
+	var dataStore: (ReminderDataStore & NotionPipe)?
   
     init(controller: ReminderController? = nil) {
         self.controller = controller
@@ -30,8 +31,15 @@ final class ReminderRouter: ReminderRoutingLogic, ReminderDataPassing {
 		noteController.setPipe(pipe: self)
 		self.controller?.present(noteController, animated: true)
 	}
+	
+	func presentNotionController() {
+		let notion = NotionController()
+		notion.setPipe(pipe: dataStore)
+		self.controller?.present(notion, animated: true)
+	}
 
 }
+
 
 extension ReminderRouter: NotePipe {
 	

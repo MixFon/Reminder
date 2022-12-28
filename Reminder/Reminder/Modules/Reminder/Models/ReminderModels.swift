@@ -9,8 +9,9 @@ import UIKit
 import CoreTableView
 
 protocol _Chapter {
+	var text: String? { get set }
 	var notes: [_Note]? { get set }
-	var chapter: String? { get }
+	var hashValue: Int { get }
 	
 	mutating func addNote(note: _Note?)
 	mutating func updateIndexes()
@@ -23,12 +24,22 @@ enum ReminderModel {
 	
 	struct Chapter: _Chapter {
 		var notes: [_Note]?
-		var chapter: String?
+		var text: String?
+		
+		var hashValue: Int {
+			var hash = 0
+			for note in notes ?? [] {
+				hash = [hash, note.hachValue].hashValue
+			}
+			if let text {
+				hash = [hash, text.hashValue].hashValue
+			}
+			return hash
+		}
 
 		
 		mutating func addNote(note: _Note?) {
 			guard let note else { return }
-			debugPrint(note)
 			for index in (notes ?? []).indices {
 				if index == note.index {
 					self.notes?[index] = note
@@ -63,6 +74,8 @@ enum ReminderModel {
 	}
 	
     enum Request {
+		case add
+		case edit(_Chapter?)
 		case start
 		case selectChapter(_Chapter?)
     }
