@@ -34,6 +34,13 @@ final class ReminderPresenter: ReminderPresentationLogic {
 }
 
 extension ReminderPresenter: ChapterActions {
+	func editChapter(chapter: _Chapter) {
+		self.controller?.displayContent(show: .edit(chapter))
+	}
+	
+	func deleteChapter(chapter: _Chapter) {
+		self.controller?.displayContent(show: .delete(chapter))
+	}
 	
 	func selectChapter(chapter: _Chapter) {
 		self.controller?.displayContent(show: .present(chapter))

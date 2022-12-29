@@ -33,12 +33,15 @@ final class ReminderInteractor: ReminderBusinessLogic, ReminderDataStore {
 			let chapters = self.manager.getChapters()
 			self.presenter?.buildState(response: .work(chapters))
 		case .add:
-			self.selectChapter = ReminderModel.Chapter(notes: nil, text: nil)
+			self.selectChapter = ReminderModel.Chapter(notes: [], text: nil)
 			self.notion = NotionModel.Notion(
 				text: nil,
 				title: "Введите название нового раздела",
 				buttonTitle: "Добавить"
 			)
+		case .delete(let chapter):
+			self.selectChapter = nil
+			self.manager.deleteChapter(chapter: chapter)
 		case .edit(let chapter):
 			self.selectChapter = chapter
 			self.notion = NotionModel.Notion(

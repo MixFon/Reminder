@@ -9,6 +9,8 @@ import Foundation
 import CoreTableView
 
 protocol ChapterActions {
+	func editChapter(chapter: _Chapter)
+	func deleteChapter(chapter: _Chapter)
 	func selectChapter(chapter: _Chapter)
 }
 
@@ -17,7 +19,11 @@ final class ChapterHelper: _TableHelper {
 	private var chapters: [_Chapter]?
 	private var actions: ChapterActions?
 	
-	var onSelect: Command<_Chapter>?
+	enum CellAction {
+		case edit
+		case delete
+		case select
+	}
 	
 	init(chapters: [_Chapter]? = nil, actions: ChapterActions? = nil) {
 		self.chapters = chapters
@@ -34,8 +40,15 @@ final class ChapterHelper: _TableHelper {
 			let dataChapters = ReminderView.ViewState.Chapter(
 				id: "\(chapter.hashValue)",
 				title: chapter.text,
-				onItemSelect: Command {
-					self.actions?.selectChapter(chapter: chapter)
+				onAction: Command { action in
+					switch action {
+					case .edit:
+						self.actions?.editChapter(chapter: chapter)
+					case .delete:
+						self.actions?.deleteChapter(chapter: chapter)
+					case .select:
+						self.actions?.selectChapter(chapter: chapter)
+					}
 				}
 			)
 			elements.append(dataChapters.toElement())

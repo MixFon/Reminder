@@ -57,4 +57,8 @@ final class ReminderManager {
 		}
 		self.chapters?.append(chapter)
 	}
+
+	func deleteChapter(chapter: _Chapter?) {
+		
+	}
 }

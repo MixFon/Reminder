@@ -20,6 +20,12 @@ final class NoteHelper: _TableHelper {
 	private var actions: NoteActions?
 	private var data: _Chapter?
 	
+	enum CellAction {
+		case edit
+		case delete
+		case chengeIcon
+	}
+	
 	init(data: _Chapter? = nil, actions: NoteActions? = nil) {
 		self.data = data
 		self.actions = actions
@@ -28,13 +34,7 @@ final class NoteHelper: _TableHelper {
 	func makeHeader() -> HeaderData? {
 		return nil
 	}
-	
-	enum CellAction {
-		case edit
-		case delete
-		case chengeIcon
-	}
-	
+
 	func makeElements() -> [Element] {
 		var elements: [Element] = []
 		for note in data?.notes ?? [] {

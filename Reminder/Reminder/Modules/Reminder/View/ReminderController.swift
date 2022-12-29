@@ -51,6 +51,11 @@ extension ReminderController: ReminderDisplayLogic {
 		switch show {
 		case .display(let data):
 			self.mainView.configure(with: data)
+		case .edit(let chapter):
+			self.interactor?.makeState(requst: .edit(chapter))
+			self.router?.presentNotionController()
+		case .delete(let chapter):
+			self.interactor?.makeState(requst: .delete(chapter))
 		case .present(let chapter):
 			self.interactor?.makeState(requst: .selectChapter(chapter))
 			self.router?.presentController()

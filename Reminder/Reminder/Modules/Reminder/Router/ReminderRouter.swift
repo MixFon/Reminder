@@ -30,6 +30,7 @@ final class ReminderRouter: ReminderRoutingLogic {
 	
 	func presentNotionController() {
 		let notion = NotionController()
+		notion.modalPresentationStyle = .popover
 		notion.setPipe(pipe: self.dataStore)
 		self.controller?.present(notion, animated: true)
 	}

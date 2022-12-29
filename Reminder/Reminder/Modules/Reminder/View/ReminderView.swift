@@ -33,7 +33,7 @@ final class ReminderView: UIView {
 		struct Chapter: _ChapterCell {
 			var id: String
 			var title: String?
-			var onItemSelect: Command<Void>
+			var onAction: Command<ChapterHelper.CellAction>?
 		}
 	}
 	

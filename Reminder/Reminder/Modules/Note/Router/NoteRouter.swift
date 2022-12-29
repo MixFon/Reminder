@@ -51,6 +51,7 @@ final class NoteRouter: NoteRoutingLogic {
 	func presentNotion() {
 		let notion = NotionController()
 		notion.setPipe(pipe: self.dataStore)
+		notion.modalPresentationStyle = .popover
 		self.controller?.present(notion, animated: true)
 	}
 }

@@ -9,6 +9,7 @@ import UIKit
 import CoreTableView
 
 protocol _Chapter {
+	//var index:
 	var text: String? { get set }
 	var notes: [_Note]? { get set }
 	var hashValue: Int { get }
@@ -36,7 +37,6 @@ enum ReminderModel {
 			}
 			return hash
 		}
-
 		
 		mutating func addNote(note: _Note?) {
 			guard let note else { return }
@@ -77,6 +77,7 @@ enum ReminderModel {
 		case add
 		case edit(_Chapter?)
 		case start
+		case delete(_Chapter?)
 		case selectChapter(_Chapter?)
     }
     
@@ -87,7 +88,9 @@ enum ReminderModel {
     
 	enum ViewModel {
 		case display(ReminderShow)
-		case present(_Chapter)
+		case edit(_Chapter?)
+		case delete(_Chapter?)
+		case present(_Chapter?)
 		
 		struct Show: ReminderShow {
 			var title: String?

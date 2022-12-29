@@ -119,7 +119,7 @@ extension NoteCell: UIContextMenuInteractionDelegate {
 					self.onAction?.perform(with: .delete)
 				}
 			)
-			return UIMenu(title: "MenuTitle", children: [edit, delete])
+			return UIMenu(title: "Выбирете действие", children: [edit, delete])
 		}
 		return configuration
 	}
