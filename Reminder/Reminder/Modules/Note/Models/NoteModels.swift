@@ -8,9 +8,9 @@
 import UIKit
 import CoreTableView
 
-typealias NoteIndex = Range<Array<_Note>.Index>.Element
 
 protocol _Note {
+	typealias NoteIndex = Range<Array<_Note>.Index>.Element
 	var text: String? { get set }
 	var index: NoteIndex? { get set }
 	var image: IconNote? { get set }

@@ -9,8 +9,9 @@ import UIKit
 import CoreTableView
 
 protocol _Chapter {
-	//var index:
+	typealias ChapterIndex = Range<Array<_Chapter>.Index>.Element
 	var text: String? { get set }
+	var index: ChapterIndex? { get set }
 	var notes: [_Note]? { get set }
 	var hashValue: Int { get }
 	
@@ -20,58 +21,14 @@ protocol _Chapter {
 	mutating func changeNoteIcon(note: _Note?)
 }
 
+protocol _Reminder {
+	func getChapters() -> [_Chapter]?
+	mutating func setChapter(chapter: _Chapter?)
+	mutating func setChapters(chapters: [_Chapter]?)
+	mutating func deleteChapter(chapter: _Chapter?)
+}
 
 enum ReminderModel {
-	
-	struct Chapter: _Chapter {
-		var notes: [_Note]?
-		var text: String?
-		
-		var hashValue: Int {
-			var hash = 0
-			for note in notes ?? [] {
-				hash = [hash, note.hachValue].hashValue
-			}
-			if let text {
-				hash = [hash, text.hashValue].hashValue
-			}
-			return hash
-		}
-		
-		mutating func addNote(note: _Note?) {
-			guard let note else { return }
-			for index in (notes ?? []).indices {
-				if index == note.index {
-					self.notes?[index] = note
-					return
-				}
-			}
-			self.notes?.append(note)
-			updateIndexes()
-		}
-		
-		mutating func updateIndexes() {
-			for index in (notes ?? []).indices {
-				self.notes?[index].index = index
-			}
-		}
-		
-		mutating func deleteNote(note: _Note?) {
-			guard let index = note?.index else { return }
-			self.notes?.remove(at: index)
-			updateIndexes()
-		}
-		
-		mutating func changeNoteIcon(note: _Note?) {
-			guard let note else { return }
-			for index in (notes ?? []).indices {
-				if index == note.index {
-					self.notes?[index].image?.opositeImage()
-					return
-				}
-			}
-		}
-	}
 	
     enum Request {
 		case add
@@ -97,4 +54,102 @@ enum ReminderModel {
 			var states: [State]?
 		}
     }
+}
+
+// MARK: _Reminder
+extension ReminderModel {
+	
+	struct Reminder: _Reminder {
+		private var chapters: [_Chapter]?
+		
+		mutating func updateIndexes() {
+			for index in (self.chapters ?? []).indices {
+				self.chapters?[index].index = index
+				self.chapters?[index].updateIndexes()
+			}
+		}
+		
+		func getChapters() -> [_Chapter]? {
+			return self.chapters
+		}
+		
+		mutating func setChapters(chapters: [_Chapter]?) {
+			self.chapters = chapters
+			updateIndexes()
+		}
+		
+		mutating func setChapter(chapter: _Chapter?) {
+			guard let chapter else { return }
+			debugPrint(chapter)
+			for index in (self.chapters ?? []).indices {
+				if index == chapter.index {
+					self.chapters?[index] = chapter
+					return
+				}
+			}
+			self.chapters?.append(chapter)
+			self.updateIndexes()
+		}
+
+		mutating func deleteChapter(chapter: _Chapter?) {
+			guard let index = chapter?.index else { return }
+			self.chapters?.remove(at: index)
+			self.updateIndexes()
+		}
+	}
+}
+
+// MARK: _Chapter
+extension ReminderModel {
+	
+	struct Chapter: _Chapter {
+		var text: String?
+		var notes: [_Note]?
+		var index: ChapterIndex?
+		
+		var hashValue: Int {
+			var hash = 0
+			for note in notes ?? [] {
+				hash = [hash, note.hachValue].hashValue
+			}
+			if let text {
+				hash = [hash, text.hashValue].hashValue
+			}
+			return hash
+		}
+		
+		mutating func updateIndexes() {
+			for index in (notes ?? []).indices {
+				self.notes?[index].index = index
+			}
+		}
+		
+		mutating func addNote(note: _Note?) {
+			guard let note else { return }
+			for index in (notes ?? []).indices {
+				if index == note.index {
+					self.notes?[index] = note
+					return
+				}
+			}
+			self.notes?.append(note)
+			updateIndexes()
+		}
+
+		mutating func deleteNote(note: _Note?) {
+			guard let index = note?.index else { return }
+			self.notes?.remove(at: index)
+			updateIndexes()
+		}
+		
+		mutating func changeNoteIcon(note: _Note?) {
+			guard let note else { return }
+			for index in (notes ?? []).indices {
+				if index == note.index {
+					self.notes?[index].image?.opositeImage()
+					return
+				}
+			}
+		}
+	}
 }

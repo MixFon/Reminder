@@ -19,21 +19,26 @@ protocol ReminderDataStore {
 final class ReminderInteractor: ReminderBusinessLogic, ReminderDataStore {
 
 	private var notion: _Notion?
-	private let manager = ReminderManager()
+	private var manager: ReminderManager?
+	private var reminder: _Reminder?
 	private var presenter: ReminderPresentationLogic?
 	private var selectChapter: _Chapter?
 	
 	init(presenter: ReminderPresentationLogic?) {
 		self.presenter = presenter
+		self.manager = ReminderManager()
+		self.reminder = ReminderModel.Reminder()
+		let chapters = self.manager?.getChapters()
+		self.reminder?.setChapters(chapters: chapters)
 	}
 	
 	func makeState(requst: ReminderModel.Request) {
 		switch requst {
 		case .start:
-			let chapters = self.manager.getChapters()
+			let chapters = self.reminder?.getChapters()
 			self.presenter?.buildState(response: .work(chapters))
 		case .add:
-			self.selectChapter = ReminderModel.Chapter(notes: [], text: nil)
+			self.selectChapter = ReminderModel.Chapter(text: nil, notes: [])
 			self.notion = NotionModel.Notion(
 				text: nil,
 				title: "Введите название нового раздела",
@@ -41,7 +46,8 @@ final class ReminderInteractor: ReminderBusinessLogic, ReminderDataStore {
 			)
 		case .delete(let chapter):
 			self.selectChapter = nil
-			self.manager.deleteChapter(chapter: chapter)
+			self.reminder?.deleteChapter(chapter: chapter)
+			self.makeState(requst: .start)
 		case .edit(let chapter):
 			self.selectChapter = chapter
 			self.notion = NotionModel.Notion(
@@ -55,11 +61,11 @@ final class ReminderInteractor: ReminderBusinessLogic, ReminderDataStore {
 	}
 	
 	func getChapters() -> [_Chapter]? {
-		return self.manager.getChapters()
+		return self.reminder?.getChapters()
 	}
 	
 	func setChapter(chapter: _Chapter?) {
-		self.manager.setChapter(chapter: chapter)
+		self.reminder?.setChapter(chapter: chapter)
 		makeState(requst: .start)
 	}
 
