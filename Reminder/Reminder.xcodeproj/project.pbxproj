@@ -45,6 +45,10 @@
 		299F8EF729410B40001AC207 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299F8EF629410B40001AC207 /* Colors.swift */; };
 		29BD6ECC2945CB6B00DC4CDD /* ReminderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BD6ECB2945CB6B00DC4CDD /* ReminderManager.swift */; };
 		29BD6ECE2945CD3100DC4CDD /* ChapterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BD6ECD2945CD3100DC4CDD /* ChapterHelper.swift */; };
+		29F66336296DE3E900F34599 /* DBChapter+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F66332296DE3E900F34599 /* DBChapter+CoreDataClass.swift */; };
+		29F66337296DE3E900F34599 /* DBChapter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F66333296DE3E900F34599 /* DBChapter+CoreDataProperties.swift */; };
+		29F66338296DE3E900F34599 /* DBNote+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F66334296DE3E900F34599 /* DBNote+CoreDataClass.swift */; };
+		29F66339296DE3E900F34599 /* DBNote+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F66335296DE3E900F34599 /* DBNote+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +90,10 @@
 		299F8EF629410B40001AC207 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		29BD6ECB2945CB6B00DC4CDD /* ReminderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderManager.swift; sourceTree = "<group>"; };
 		29BD6ECD2945CD3100DC4CDD /* ChapterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterHelper.swift; sourceTree = "<group>"; };
+		29F66332296DE3E900F34599 /* DBChapter+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBChapter+CoreDataClass.swift"; sourceTree = "<group>"; };
+		29F66333296DE3E900F34599 /* DBChapter+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBChapter+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		29F66334296DE3E900F34599 /* DBNote+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBNote+CoreDataClass.swift"; sourceTree = "<group>"; };
+		29F66335296DE3E900F34599 /* DBNote+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBNote+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +246,7 @@
 		2950A4DE293D036B00F66963 /* Reminder */ = {
 			isa = PBXGroup;
 			children = (
+				29F66329296DE2A400F34599 /* DataBase */,
 				299F8EF329410AE5001AC207 /* Style */,
 				2950A509293D0CFA00F66963 /* Protocols */,
 				2950A4F6293D04A300F66963 /* Modules */,
@@ -369,6 +378,17 @@
 			path = ReminderManager;
 			sourceTree = "<group>";
 		};
+		29F66329296DE2A400F34599 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				29F66332296DE3E900F34599 /* DBChapter+CoreDataClass.swift */,
+				29F66333296DE3E900F34599 /* DBChapter+CoreDataProperties.swift */,
+				29F66334296DE3E900F34599 /* DBNote+CoreDataClass.swift */,
+				29F66335296DE3E900F34599 /* DBNote+CoreDataProperties.swift */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -454,6 +474,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2939D85529536CF400631B58 /* NotionPresenter.swift in Sources */,
+				29F66336296DE3E900F34599 /* DBChapter+CoreDataClass.swift in Sources */,
 				2939D85729536CF400631B58 /* NotionModels.swift in Sources */,
 				29931E8B293D105600B585F0 /* ReminderInteractor.swift in Sources */,
 				29BD6ECE2945CD3100DC4CDD /* ChapterHelper.swift in Sources */,
@@ -469,8 +490,10 @@
 				2939D85829536CF400631B58 /* NotionController.swift in Sources */,
 				2910881D294DE922003C20E3 /* NoteHelper.swift in Sources */,
 				296D30CE2944E67D009BC9CE /* NoteCell.swift in Sources */,
+				29F66339296DE3E900F34599 /* DBNote+CoreDataProperties.swift in Sources */,
 				2926C4FF29447AB700A6A574 /* NoteModels.swift in Sources */,
 				29931E87293D105600B585F0 /* ReminderPresenter.swift in Sources */,
+				29F66337296DE3E900F34599 /* DBChapter+CoreDataProperties.swift in Sources */,
 				2950A4E0293D036B00F66963 /* AppDelegate.swift in Sources */,
 				299F8EF729410B40001AC207 /* Colors.swift in Sources */,
 				2926C50829447B7000A6A574 /* NoteView.swift in Sources */,
@@ -479,6 +502,7 @@
 				2950A50B293D0D1900F66963 /* TableHelper.swift in Sources */,
 				2950A4E2293D036B00F66963 /* SceneDelegate.swift in Sources */,
 				2939D85A29536CF400631B58 /* NotionView.swift in Sources */,
+				29F66338296DE3E900F34599 /* DBNote+CoreDataClass.swift in Sources */,
 				2926C4FD29447AB700A6A574 /* NotePresenter.swift in Sources */,
 				2950A4EA293D036B00F66963 /* Reminder.xcdatamodeld in Sources */,
 			);
