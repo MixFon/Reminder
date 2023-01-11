@@ -66,6 +66,7 @@ final class ReminderInteractor: ReminderBusinessLogic, ReminderDataStore {
 	
 	func setChapter(chapter: _Chapter?) {
 		self.reminder?.setChapter(chapter: chapter)
+		self.manager?.saveChapter(chapter: chapter)
 		makeState(requst: .start)
 	}
 
