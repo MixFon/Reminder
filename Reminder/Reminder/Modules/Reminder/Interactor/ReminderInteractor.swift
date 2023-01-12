@@ -20,22 +20,18 @@ final class ReminderInteractor: ReminderBusinessLogic, ReminderDataStore {
 
 	private var notion: _Notion?
 	private var manager: ReminderManager?
-	private var reminder: _Reminder?
 	private var presenter: ReminderPresentationLogic?
 	private var selectChapter: _Chapter?
 	
 	init(presenter: ReminderPresentationLogic?) {
 		self.presenter = presenter
 		self.manager = ReminderManager()
-		self.reminder = ReminderModel.Reminder()
-		let chapters = self.manager?.getChapters()
-		self.reminder?.setChapters(chapters: chapters)
 	}
 	
 	func makeState(requst: ReminderModel.Request) {
 		switch requst {
 		case .start:
-			let chapters = self.reminder?.getChapters()
+			let chapters = self.manager?.getChapters()
 			self.presenter?.buildState(response: .work(chapters))
 		case .add:
 			self.selectChapter = ReminderModel.Chapter(text: nil, notes: [])
@@ -46,7 +42,7 @@ final class ReminderInteractor: ReminderBusinessLogic, ReminderDataStore {
 			)
 		case .delete(let chapter):
 			self.selectChapter = nil
-			self.reminder?.deleteChapter(chapter: chapter)
+			self.manager?.deleteChapter(chapter: chapter)
 			self.makeState(requst: .start)
 		case .edit(let chapter):
 			self.selectChapter = chapter
@@ -61,13 +57,12 @@ final class ReminderInteractor: ReminderBusinessLogic, ReminderDataStore {
 	}
 	
 	func getChapters() -> [_Chapter]? {
-		return self.reminder?.getChapters()
+		return self.manager?.getChapters()
 	}
 	
 	func setChapter(chapter: _Chapter?) {
-		self.reminder?.setChapter(chapter: chapter)
-		self.manager?.saveChapter(chapter: chapter)
-		makeState(requst: .start)
+//		self.manager?.saveChapter(chapter: chapter)
+//		makeState(requst: .start)
 	}
 
 }
@@ -82,7 +77,10 @@ extension ReminderInteractor: NotionPipe {
 	func returnNotion(notion: _Notion?) {
 		self.notion = notion
 		self.selectChapter?.text = notion?.text
-		setChapter(chapter: self.selectChapter)
+		//setChapter(chapter: self.selectChapter)
+		//self.manager?.updateChapter(chapter: self.selectChapter)
+		self.manager?.updateOrSaveChapter(chapter: self.selectChapter)
+		makeState(requst: .start)
 	}
 }
 
@@ -94,6 +92,7 @@ extension ReminderInteractor: NotePipe {
 	}
 	
 	func returnChapter(chapter: _Chapter?) {
-		setChapter(chapter: chapter)
+		//self.manager?.updateChapter(chapter: chapter)
+		//setChapter(chapter: chapter)
 	}
 }

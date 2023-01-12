@@ -11,56 +11,51 @@ import UIKit
 
 final class ReminderManager {
 	
-	private var chapters: [_Chapter]?
-	
-	var context: NSManagedObjectContext? = {
+	private lazy var context: NSManagedObjectContext? = {
 		return (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
 	}()
 	
-	
-	
-	init() {
-		self.chapters = [
-			ReminderModel.Chapter.init(
-				text: "Бассейн",
-				notes: [
-					NoteModel.Note(text: "Плавки", image: .off),
-					NoteModel.Note(text: "Шапочка", image: .off),
-					NoteModel.Note(text: "Носки", image: .off),
-					NoteModel.Note(text: "Очки", image: .off)
-				]
-			),
-			ReminderModel.Chapter.init(
-				text: "Фитнес",
-				notes: [
-					NoteModel.Note(text: "Ботинки", image: .off),
-					NoteModel.Note(text: "Шорты", image: .off),
-					NoteModel.Note(text: "Носки", image: .off),
-					NoteModel.Note(text: "Ботинки", image: .off)
-				]
-			)
-		]
-	}
-	
-	func saveChapter(chapter: _Chapter?) {
-		guard let context else { return }
-		let dbChapter = DBChapter(context: context)
-		dbChapter.text = chapter?.text
+	private func saveContext() {
 		(UIApplication.shared.delegate as? AppDelegate)?.saveContext()
 	}
 	
 	func getChapters() -> [_Chapter]? {
 		let noteFetch: NSFetchRequest<DBChapter> = DBChapter.fetchRequest()
 		do {
-			//let managedContext = AppDelegate.coreDataSatack
-			let results = try self.context?.fetch(noteFetch)
-			for res in results ?? [] {
-				debugPrint(res.text)
-				debugPrint(res.note)
-			}
+			return try self.context?.fetch(noteFetch)
 		} catch let error as NSError {
 			print("Fetch error: \(error) description: \(error.userInfo)")
 		}
-		return self.chapters
+		return nil
+	}
+	
+	private func isExist(chapter: _Chapter?) -> Bool? {
+		do {
+			let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Chapter")
+			fetchRequest.fetchLimit =  1
+			fetchRequest.predicate = NSPredicate(format: "text == %@" , chapter?.text ?? "")
+			return try self.context?.count(for: fetchRequest) != 0
+		} catch let error as NSError {
+			print("Fetch error: \(error) description: \(error.userInfo)")
+		}
+		return nil
+		
+	}
+	
+	func updateOrSaveChapter(chapter: _Chapter?) {
+		if isExist(chapter: chapter) == true {
+			guard let dbCapter = chapter as? DBChapter else { return }
+			dbCapter.text = chapter?.text
+		} else {
+			let dbChapter = DBChapter(context: self.context!)
+			dbChapter.text = chapter?.text
+		}
+		saveContext()
+	}
+	
+	func deleteChapter(chapter: _Chapter?) {
+		guard let dbCapter = chapter as? DBChapter else { return }
+		self.context?.delete(dbCapter)
+		saveContext()
 	}
 }

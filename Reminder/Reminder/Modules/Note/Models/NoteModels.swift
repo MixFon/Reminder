@@ -14,7 +14,7 @@ protocol _Note {
 	var text: String? { get set }
 	var index: NoteIndex? { get set }
 	var image: IconNote? { get set }
-	var hachValue: Int { get }
+	var hachValue: Int? { get }
 }
 
 enum IconNote {
@@ -56,7 +56,7 @@ enum NoteModel {
 		var index: NoteIndex?
 		var image: IconNote? = .off
 		
-		var hachValue: Int {
+		var hachValue: Int? {
 			var hash = 0
 			if let text {
 				hash = [hash, text.hashValue].hashValue

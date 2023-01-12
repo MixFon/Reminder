@@ -5,7 +5,9 @@
 //  Created by Михаил Фокин on 10.12.2022.
 //
 
+import UIKit
 import Foundation
+import CoreData
 
 protocol NoteBusinessLogic: AnyObject {
    func makeState(requst: NoteModel.Request)
@@ -22,6 +24,10 @@ final class NoteInteractor: NoteBusinessLogic {
 	private var notion: _Notion?
 	private var chapter: _Chapter?
 	private var presenter: NotePresentationLogic?
+	
+	private lazy var context: NSManagedObjectContext? = {
+		return (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+	}()
 
 	init(presenter: NotePresentationLogic? = nil) {
         self.presenter = presenter
@@ -82,7 +88,9 @@ extension NoteInteractor: NotionPipe {
 	
 	func returnNotion(notion: _Notion?) {
 		self.note?.text = notion?.text
-		self.chapter?.addNote(note: self.note)
+		let dbNote = DBNote(context: self.context!)
+		dbNote.text = notion?.text
+		self.chapter?.addNote(note: dbNote)
 		makeState(requst: .start)
 	}
 }

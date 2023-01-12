@@ -21,13 +21,6 @@ protocol _Chapter {
 	mutating func changeNoteIcon(note: _Note?)
 }
 
-protocol _Reminder {
-	func getChapters() -> [_Chapter]?
-	mutating func setChapter(chapter: _Chapter?)
-	mutating func setChapters(chapters: [_Chapter]?)
-	mutating func deleteChapter(chapter: _Chapter?)
-}
-
 enum ReminderModel {
 	
     enum Request {
@@ -54,49 +47,6 @@ enum ReminderModel {
 			var states: [State]?
 		}
     }
-}
-
-// MARK: _Reminder
-extension ReminderModel {
-	
-	struct Reminder: _Reminder {
-		private var chapters: [_Chapter]?
-		
-		mutating func updateIndexes() {
-			for index in (self.chapters ?? []).indices {
-				self.chapters?[index].index = index
-				self.chapters?[index].updateIndexes()
-			}
-		}
-		
-		func getChapters() -> [_Chapter]? {
-			return self.chapters
-		}
-		
-		mutating func setChapters(chapters: [_Chapter]?) {
-			self.chapters = chapters
-			updateIndexes()
-		}
-		
-		mutating func setChapter(chapter: _Chapter?) {
-			guard let chapter else { return }
-			debugPrint(chapter)
-			for index in (self.chapters ?? []).indices {
-				if index == chapter.index {
-					self.chapters?[index] = chapter
-					return
-				}
-			}
-			self.chapters?.append(chapter)
-			self.updateIndexes()
-		}
-
-		mutating func deleteChapter(chapter: _Chapter?) {
-			guard let index = chapter?.index else { return }
-			self.chapters?.remove(at: index)
-			self.updateIndexes()
-		}
-	}
 }
 
 // MARK: _Chapter

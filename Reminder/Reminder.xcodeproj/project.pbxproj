@@ -246,10 +246,10 @@
 		2950A4DE293D036B00F66963 /* Reminder */ = {
 			isa = PBXGroup;
 			children = (
+				2950A4F6293D04A300F66963 /* Modules */,
 				29F66329296DE2A400F34599 /* DataBase */,
 				299F8EF329410AE5001AC207 /* Style */,
 				2950A509293D0CFA00F66963 /* Protocols */,
-				2950A4F6293D04A300F66963 /* Modules */,
 				2950A4DF293D036B00F66963 /* AppDelegate.swift */,
 				2950A4E1293D036B00F66963 /* SceneDelegate.swift */,
 				2950A4EB293D036E00F66963 /* Assets.xcassets */,

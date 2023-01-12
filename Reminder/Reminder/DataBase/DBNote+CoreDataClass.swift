@@ -10,6 +10,10 @@ import Foundation
 import CoreData
 
 @objc(DBNote)
-public class DBNote: NSManagedObject {
+public class DBNote: NSManagedObject, _Note {
+	var index: NoteIndex?
+	var image: IconNote?
+	var hachValue: Int?
+	
 
 }
