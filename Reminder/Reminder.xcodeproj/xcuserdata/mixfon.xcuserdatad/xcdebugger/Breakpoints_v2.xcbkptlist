@@ -23,64 +23,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BF76DFC3-1714-4731-9B48-369F4019889F"
-            shouldBeEnabled = "Yes"
+            uuid = "44968F14-CFAF-4914-8BE8-D9A64579A040"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Reminder/DataBase/DBChapter+CoreDataClass.swift"
+            filePath = "Reminder/Modules/Note/Interactor/NoteInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "addNote(note:)"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "makeState(requst:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DC817412-934F-4F1F-9D56-9ED006575D23"
-            shouldBeEnabled = "Yes"
+            uuid = "B028DFAE-9E30-4F3E-9801-6454E82F5979"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Reminder/DataBase/DBChapter+CoreDataClass.swift"
+            filePath = "Reminder/DataBase/DBNote+CoreDataClass.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "deleteNote(note:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B1EE496E-71A0-4377-8A6A-BBFCFFE6C909"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Reminder/Modules/Reminder/Interactor/ReminderManager/ReminderManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "updateOrSaveChapter(chapter:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "48550310-660D-4863-A3B6-39EDEA4C4BC2"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Reminder/Modules/Reminder/Interactor/ReminderManager/ReminderManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "updateOrSaveChapter(chapter:)"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "changeIcon()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

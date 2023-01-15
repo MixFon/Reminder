@@ -54,7 +54,10 @@ final class NoteInteractor: NoteBusinessLogic {
 		case .delete(let note):
 			deleteNote(note: note)
 		case .changeIcon(let note):
-			changeIconNote(note: note)
+			self.note = note
+			self.note?.changeIcon()
+			makeState(requst: .start)
+			//changeIconNote(note: note)
 		}
 	}
 	
@@ -87,9 +90,9 @@ extension NoteInteractor: NotionPipe {
 	}
 	
 	func returnNotion(notion: _Notion?) {
-		self.note?.text = notion?.text
 		let dbNote = DBNote(context: self.context!)
 		dbNote.text = notion?.text
+		dbNote.isSelect = false
 		self.chapter?.addNote(note: dbNote)
 		makeState(requst: .start)
 	}

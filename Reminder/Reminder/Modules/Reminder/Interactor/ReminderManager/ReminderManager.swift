@@ -22,7 +22,20 @@ final class ReminderManager {
 	func getChapters() -> [_Chapter]? {
 		let noteFetch: NSFetchRequest<DBChapter> = DBChapter.fetchRequest()
 		do {
-			return try self.context?.fetch(noteFetch)
+			let result = try self.context?.fetch(noteFetch)
+			for res in result ?? [] {
+				debugPrint(res.text)
+				for note in res.notes ?? [] {
+					debugPrint("note", note.text)
+				}
+				for note in res.note ?? [] {
+					let newNote = note as! DBNote
+					dump(newNote.text)
+					dump(newNote.image)
+					dump(newNote.isSelect)
+				}
+			}
+			return result
 		} catch let error as NSError {
 			print("Fetch error: \(error) description: \(error.userInfo)")
 		}
@@ -44,8 +57,8 @@ final class ReminderManager {
 	
 	func updateOrSaveChapter(chapter: _Chapter?) {
 		if isExist(chapter: chapter) == true {
-			guard let dbCapter = chapter as? DBChapter else { return }
-			dbCapter.text = chapter?.text
+			//guard let dbCapter = chapter as? DBChapter else { return }
+			//dbCapter.text = chapter?.text
 		} else {
 			let dbChapter = DBChapter(context: self.context!)
 			dbChapter.text = chapter?.text

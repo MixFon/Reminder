@@ -10,16 +10,27 @@ import CoreTableView
 
 
 protocol _Note {
-	typealias NoteIndex = Range<Array<_Note>.Index>.Element
 	var text: String? { get set }
-	var index: NoteIndex? { get set }
-	var image: IconNote? { get set }
+	var image: IconNote? { get }
 	var hachValue: Int? { get }
+	
+	mutating func changeIcon()
 }
 
 enum IconNote {
 	case off
 	case on
+	
+	init(isSelect: Bool?) {
+		switch isSelect {
+		case false:
+			self = .off
+		case true:
+			self = .on
+		default:
+			self = .off
+		}
+	}
 	
 	mutating func opositeImage() {
 		switch self {
@@ -47,13 +58,21 @@ enum IconNote {
 			return .Green
 		}
 	}
+	
+	func getBool() -> Bool {
+		switch self {
+		case .off:
+			return false
+		case .on:
+			return true
+		}
+	}
 }
 
 enum NoteModel {
 	
 	struct Note: _Note {
 		var text: String?
-		var index: NoteIndex?
 		var image: IconNote? = .off
 		
 		var hachValue: Int? {
@@ -61,14 +80,16 @@ enum NoteModel {
 			if let text {
 				hash = [hash, text.hashValue].hashValue
 			}
-			if let index {
-				hash = [hash, index.hashValue].hashValue
-			}
 			if let image {
 				hash = [hash, image.hashValue].hashValue
 			}
 			return hash
 		}
+		
+		mutating func changeIcon() {
+			self.image?.opositeImage()
+		}
+		
 	}
     
     enum Request {

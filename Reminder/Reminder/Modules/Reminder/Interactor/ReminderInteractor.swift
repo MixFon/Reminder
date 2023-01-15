@@ -64,7 +64,6 @@ final class ReminderInteractor: ReminderBusinessLogic, ReminderDataStore {
 //		self.manager?.saveChapter(chapter: chapter)
 //		makeState(requst: .start)
 	}
-
 }
 
 // MARK: NotionPipe

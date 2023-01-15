@@ -9,16 +9,12 @@ import UIKit
 import CoreTableView
 
 protocol _Chapter {
-	typealias ChapterIndex = Range<Array<_Chapter>.Index>.Element
 	var text: String? { get set }
-	var index: ChapterIndex? { get set }
 	var notes: [_Note]? { get set }
 	var hashValue: Int { get }
 	
 	mutating func addNote(note: _Note?)
-	mutating func updateIndexes()
 	mutating func deleteNote(note: _Note?)
-	mutating func changeNoteIcon(note: _Note?)
 }
 
 enum ReminderModel {
@@ -55,7 +51,6 @@ extension ReminderModel {
 	struct Chapter: _Chapter {
 		var text: String?
 		var notes: [_Note]?
-		var index: ChapterIndex?
 		
 		var hashValue: Int {
 			var hash = 0
@@ -68,38 +63,38 @@ extension ReminderModel {
 			return hash
 		}
 		
-		mutating func updateIndexes() {
-			for index in (notes ?? []).indices {
-				self.notes?[index].index = index
-			}
-		}
+//		mutating func updateIndexes() {
+//			for index in (notes ?? []).indices {
+//				self.notes?[index].index = index
+//			}
+//		}
 		
 		mutating func addNote(note: _Note?) {
-			guard let note else { return }
-			for index in (notes ?? []).indices {
-				if index == note.index {
-					self.notes?[index] = note
-					return
-				}
-			}
-			self.notes?.append(note)
-			updateIndexes()
+//			guard let note else { return }
+//			for index in (notes ?? []).indices {
+//				if index == note.index {
+//					self.notes?[index] = note
+//					return
+//				}
+//			}
+//			self.notes?.append(note)
+//			updateIndexes()
 		}
 
 		mutating func deleteNote(note: _Note?) {
-			guard let index = note?.index else { return }
-			self.notes?.remove(at: index)
-			updateIndexes()
+//			guard let index = note?.index else { return }
+//			self.notes?.remove(at: index)
+//			updateIndexes()
 		}
 		
 		mutating func changeNoteIcon(note: _Note?) {
-			guard let note else { return }
-			for index in (notes ?? []).indices {
-				if index == note.index {
-					self.notes?[index].image?.opositeImage()
-					return
-				}
-			}
+//			guard let note else { return }
+//			for index in (notes ?? []).indices {
+//				if index == note.index {
+//					self.notes?[index].image?.opositeImage()
+//					return
+//				}
+//			}
 		}
 	}
 }
