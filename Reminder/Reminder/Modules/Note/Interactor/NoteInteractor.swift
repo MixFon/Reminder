@@ -25,9 +25,6 @@ final class NoteInteractor: NoteBusinessLogic {
 	private var chapter: _Chapter?
 	private var presenter: NotePresentationLogic?
 	
-	private lazy var context: NSManagedObjectContext? = {
-		return (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
-	}()
 
 	init(presenter: NotePresentationLogic? = nil) {
         self.presenter = presenter
@@ -38,9 +35,9 @@ final class NoteInteractor: NoteBusinessLogic {
 		case .start:
 			self.presenter?.buildState(response: .work(self.chapter))
 		case .add:
-			self.note = NoteModel.Note()
+			self.note = nil
 			self.notion = NotionModel.Notion(
-				text: self.note?.text,
+				text: nil,
 				title: self.chapter?.text,
 				buttonTitle: "Добавить"
 			)
@@ -57,17 +54,11 @@ final class NoteInteractor: NoteBusinessLogic {
 			self.note = note
 			self.note?.changeIcon()
 			makeState(requst: .start)
-			//changeIconNote(note: note)
 		}
 	}
 	
 	private func deleteNote(note: _Note?) {
 		self.chapter?.deleteNote(note: note)
-		makeState(requst: .start)
-	}
-	
-	private func changeIconNote(note: _Note?) {
-		self.chapter?.changeNoteIcon(note: note)
 		makeState(requst: .start)
 	}
 }
@@ -90,10 +81,14 @@ extension NoteInteractor: NotionPipe {
 	}
 	
 	func returnNotion(notion: _Notion?) {
-		let dbNote = DBNote(context: self.context!)
-		dbNote.text = notion?.text
-		dbNote.isSelect = false
-		self.chapter?.addNote(note: dbNote)
+		guard let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else { return }
+		if self.note == nil {
+			let dbNote = DBNote(context: context)
+			dbNote.text = notion?.text
+			dbNote.isSelect = false
+			self.note = dbNote
+		}
+		self.chapter?.addNote(note: self.note)
 		makeState(requst: .start)
 	}
 }

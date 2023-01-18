@@ -30,8 +30,8 @@
             filePath = "Reminder/Modules/Note/Interactor/NoteInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "makeState(requst:)"
             landmarkType = "7">
          </BreakpointContent>

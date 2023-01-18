@@ -42,24 +42,25 @@ final class ReminderManager {
 		return nil
 	}
 	
-	private func isExist(chapter: _Chapter?) -> Bool? {
+	private func isExist(chapter: _Chapter?) -> Bool {
 		do {
 			let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Chapter")
 			fetchRequest.fetchLimit =  1
 			fetchRequest.predicate = NSPredicate(format: "text == %@" , chapter?.text ?? "")
-			return try self.context?.count(for: fetchRequest) != 0
+			if let count = try self.context?.count(for: fetchRequest) {
+				return count > 0
+			} else {
+				return false
+			}
 		} catch let error as NSError {
 			print("Fetch error: \(error) description: \(error.userInfo)")
 		}
-		return nil
+		return false
 		
 	}
 	
 	func updateOrSaveChapter(chapter: _Chapter?) {
-		if isExist(chapter: chapter) == true {
-			//guard let dbCapter = chapter as? DBChapter else { return }
-			//dbCapter.text = chapter?.text
-		} else {
+		if !isExist(chapter: chapter) {
 			let dbChapter = DBChapter(context: self.context!)
 			dbChapter.text = chapter?.text
 		}

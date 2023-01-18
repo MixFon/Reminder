@@ -8,7 +8,6 @@
 import UIKit
 import CoreTableView
 
-
 protocol _Note {
 	var text: String? { get set }
 	var image: IconNote? { get }
