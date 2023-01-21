@@ -54,6 +54,9 @@ final class NoteInteractor: NoteBusinessLogic {
 			self.note = note
 			self.note?.changeIcon()
 			makeState(requst: .start)
+		case .clean:
+			self.chapter?.cleanAllNotes()
+			makeState(requst: .start)
 		}
 	}
 	
@@ -87,6 +90,8 @@ extension NoteInteractor: NotionPipe {
 			dbNote.text = notion?.text
 			dbNote.isSelect = false
 			self.note = dbNote
+		} else {
+			self.note?.text = notion?.text
 		}
 		self.chapter?.addNote(note: self.note)
 		makeState(requst: .start)

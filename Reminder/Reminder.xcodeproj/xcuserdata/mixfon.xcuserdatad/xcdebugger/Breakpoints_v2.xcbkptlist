@@ -23,22 +23,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "44968F14-CFAF-4914-8BE8-D9A64579A040"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Reminder/Modules/Note/Interactor/NoteInteractor.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "makeState(requst:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "B028DFAE-9E30-4F3E-9801-6454E82F5979"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -46,8 +30,8 @@
             filePath = "Reminder/DataBase/DBNote+CoreDataClass.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
             landmarkName = "changeIcon()"
             landmarkType = "7">
          </BreakpointContent>

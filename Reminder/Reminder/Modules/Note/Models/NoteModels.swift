@@ -11,9 +11,12 @@ import CoreTableView
 protocol _Note {
 	var text: String? { get set }
 	var image: IconNote? { get }
-	var hachValue: Int? { get }
 	
-	mutating func changeIcon()
+	/// Меняет значение иконки на противоположное
+	func changeIcon()
+	
+	/// Сброс до состояния не активна
+	func cleanIcon()
 }
 
 enum IconNote {
@@ -57,43 +60,14 @@ enum IconNote {
 			return .Green
 		}
 	}
-	
-	func getBool() -> Bool {
-		switch self {
-		case .off:
-			return false
-		case .on:
-			return true
-		}
-	}
 }
 
 enum NoteModel {
-	
-	struct Note: _Note {
-		var text: String?
-		var image: IconNote? = .off
-		
-		var hachValue: Int? {
-			var hash = 0
-			if let text {
-				hash = [hash, text.hashValue].hashValue
-			}
-			if let image {
-				hash = [hash, image.hashValue].hashValue
-			}
-			return hash
-		}
-		
-		mutating func changeIcon() {
-			self.image?.opositeImage()
-		}
-		
-	}
     
     enum Request {
 		case add
 		case edit(_Note?)
+		case clean
         case start
 		case delete(_Note?)
 		case changeIcon(_Note?)

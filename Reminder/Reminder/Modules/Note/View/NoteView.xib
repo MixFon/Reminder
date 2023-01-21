@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -14,10 +14,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="u4F-HM-UaH" customClass="BaseTableView" customModule="CoreTableView">
-                    <rect key="frame" x="0.0" y="91" width="375" height="687"/>
-                    <color key="backgroundColor" name="BackgroundPrimary"/>
-                </tableView>
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fqo-gN-NUL">
                     <rect key="frame" x="0.0" y="47" width="375" height="44"/>
                     <color key="backgroundColor" name="BackgroundSecondary"/>
@@ -33,18 +29,33 @@
                                     <action selector="pressBack:" destination="iN0-l3-epB" id="J8o-e0-yVf"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem key="rightBarButtonItem" systemItem="add" id="wj0-aS-17P">
-                                <color key="tintColor" name="TintPrimary"/>
-                                <connections>
-                                    <action selector="pressAdd:" destination="iN0-l3-epB" id="yav-xQ-fpU"/>
-                                </connections>
-                            </barButtonItem>
+                            <rightBarButtonItems>
+                                <barButtonItem systemItem="add" id="wj0-aS-17P">
+                                    <color key="tintColor" name="TintPrimary"/>
+                                    <connections>
+                                        <action selector="pressAdd:" destination="iN0-l3-epB" id="yav-xQ-fpU"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem image="eraser" catalog="system" style="done" id="OYY-fg-62a">
+                                    <color key="tintColor" name="TintPrimary"/>
+                                    <connections>
+                                        <action selector="cleanAllNotes:" destination="iN0-l3-epB" id="lwY-rY-VSu"/>
+                                    </connections>
+                                </barButtonItem>
+                            </rightBarButtonItems>
                         </navigationItem>
                     </items>
+                    <navigationBarAppearance key="standardAppearance">
+                        <color key="backgroundColor" name="BackgroundPrimary"/>
+                    </navigationBarAppearance>
                 </navigationBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="insetGrouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="u4F-HM-UaH" customClass="BaseTableView" customModule="CoreTableView">
+                    <rect key="frame" x="0.0" y="91" width="375" height="687"/>
+                    <color key="backgroundColor" name="BackgroundPrimary"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" name="BackgroundSecondary"/>
+            <color key="backgroundColor" name="BackgroundPrimary"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="u4F-HM-UaH" secondAttribute="bottom" id="49C-al-BLk"/>
                 <constraint firstItem="Fqo-gN-NUL" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Bnw-gd-cX9"/>
@@ -64,6 +75,7 @@
     </objects>
     <resources>
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
+        <image name="eraser" catalog="system" width="128" height="119"/>
         <namedColor name="BackgroundPrimary">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

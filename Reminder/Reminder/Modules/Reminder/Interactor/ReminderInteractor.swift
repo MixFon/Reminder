@@ -12,7 +12,6 @@ protocol ReminderBusinessLogic: AnyObject {
 }
 
 protocol ReminderDataStore {
-	func setChapter(chapter: _Chapter?)
 	func getChapters() -> [_Chapter]?
 }
 
@@ -34,7 +33,7 @@ final class ReminderInteractor: ReminderBusinessLogic, ReminderDataStore {
 			let chapters = self.manager?.getChapters()
 			self.presenter?.buildState(response: .work(chapters))
 		case .add:
-			self.selectChapter = ReminderModel.Chapter(text: nil, notes: [])
+			self.selectChapter = manager?.getNewChapter()
 			self.notion = NotionModel.Notion(
 				text: nil,
 				title: "Введите название нового раздела",
@@ -59,11 +58,6 @@ final class ReminderInteractor: ReminderBusinessLogic, ReminderDataStore {
 	func getChapters() -> [_Chapter]? {
 		return self.manager?.getChapters()
 	}
-	
-	func setChapter(chapter: _Chapter?) {
-//		self.manager?.saveChapter(chapter: chapter)
-//		makeState(requst: .start)
-	}
 }
 
 // MARK: NotionPipe
@@ -76,8 +70,6 @@ extension ReminderInteractor: NotionPipe {
 	func returnNotion(notion: _Notion?) {
 		self.notion = notion
 		self.selectChapter?.text = notion?.text
-		//setChapter(chapter: self.selectChapter)
-		//self.manager?.updateChapter(chapter: self.selectChapter)
 		self.manager?.updateOrSaveChapter(chapter: self.selectChapter)
 		makeState(requst: .start)
 	}
@@ -88,10 +80,5 @@ extension ReminderInteractor: NotePipe {
 	
 	func acceptChapter() -> _Chapter? {
 		return self.selectChapter
-	}
-	
-	func returnChapter(chapter: _Chapter?) {
-		//self.manager?.updateChapter(chapter: chapter)
-		//setChapter(chapter: chapter)
 	}
 }

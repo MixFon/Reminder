@@ -6,6 +6,7 @@
 //
 //
 
+import UIKit
 import Foundation
 import CoreData
 
@@ -29,5 +30,12 @@ public class DBChapter: NSManagedObject, _Chapter {
 	func deleteNote(note: _Note?) {
 		guard let dbNote = note as? DBNote else { return }
 		self.removeFromNote(dbNote)
+	}
+	
+	func cleanAllNotes() {
+		for var note in self.notes ?? [] {
+			note.cleanIcon()
+		}
+		(UIApplication.shared.delegate as? AppDelegate)?.saveContext()
 	}
 }

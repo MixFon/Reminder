@@ -14,40 +14,52 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="73"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4b6-dK-MA2">
-                    <rect key="frame" x="0.0" y="6" width="393" height="61"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2kj-VC-IED">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="73"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dXD-2j-fol">
-                            <rect key="frame" x="16" y="18" width="25" height="25"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4b6-dK-MA2">
+                            <rect key="frame" x="0.0" y="6" width="393" height="61"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dXD-2j-fol">
+                                    <rect key="frame" x="16" y="18" width="25" height="25"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="25" id="79j-HH-Xue"/>
+                                        <constraint firstAttribute="height" constant="25" id="WZo-a5-IrL"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fxn-fa-GxM">
+                                    <rect key="frame" x="55" y="22" width="338" height="17"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                    <color key="textColor" name="TextPrimary"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" name="BackgroundSecondary"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="25" id="79j-HH-Xue"/>
-                                <constraint firstAttribute="height" constant="25" id="WZo-a5-IrL"/>
+                                <constraint firstAttribute="trailing" secondItem="Fxn-fa-GxM" secondAttribute="trailing" id="1ac-rn-oMp"/>
+                                <constraint firstItem="Fxn-fa-GxM" firstAttribute="leading" secondItem="dXD-2j-fol" secondAttribute="trailing" constant="14" id="DyQ-9Z-5d4"/>
+                                <constraint firstItem="dXD-2j-fol" firstAttribute="leading" secondItem="4b6-dK-MA2" secondAttribute="leading" constant="16" id="bwZ-aQ-8FN"/>
+                                <constraint firstItem="Fxn-fa-GxM" firstAttribute="centerY" secondItem="4b6-dK-MA2" secondAttribute="centerY" id="hvE-MA-2NU"/>
+                                <constraint firstItem="dXD-2j-fol" firstAttribute="centerY" secondItem="4b6-dK-MA2" secondAttribute="centerY" id="krT-N1-Fms"/>
                             </constraints>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fxn-fa-GxM">
-                            <rect key="frame" x="55" y="22" width="320" height="17"/>
-                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                            <color key="textColor" name="BackgroundPrimary"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        </view>
                     </subviews>
-                    <color key="backgroundColor" name="TintPrimary"/>
+                    <color key="backgroundColor" name="BackgroundPrimary"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="Fxn-fa-GxM" secondAttribute="trailing" constant="18" id="1ac-rn-oMp"/>
-                        <constraint firstItem="Fxn-fa-GxM" firstAttribute="leading" secondItem="dXD-2j-fol" secondAttribute="trailing" constant="14" id="DyQ-9Z-5d4"/>
-                        <constraint firstItem="dXD-2j-fol" firstAttribute="leading" secondItem="4b6-dK-MA2" secondAttribute="leading" constant="16" id="bwZ-aQ-8FN"/>
-                        <constraint firstItem="Fxn-fa-GxM" firstAttribute="centerY" secondItem="4b6-dK-MA2" secondAttribute="centerY" id="hvE-MA-2NU"/>
-                        <constraint firstItem="dXD-2j-fol" firstAttribute="centerY" secondItem="4b6-dK-MA2" secondAttribute="centerY" id="krT-N1-Fms"/>
+                        <constraint firstItem="4b6-dK-MA2" firstAttribute="top" secondItem="2kj-VC-IED" secondAttribute="top" constant="6" id="7ze-rb-eSE"/>
+                        <constraint firstAttribute="trailing" secondItem="4b6-dK-MA2" secondAttribute="trailing" id="U9x-QC-0Bl"/>
+                        <constraint firstAttribute="bottom" secondItem="4b6-dK-MA2" secondAttribute="bottom" constant="6" id="ejK-Gf-U5C"/>
+                        <constraint firstItem="4b6-dK-MA2" firstAttribute="leading" secondItem="2kj-VC-IED" secondAttribute="leading" id="fxh-wC-B6z"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" name="BackgroundPrimary"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="4b6-dK-MA2" secondAttribute="bottom" constant="6" id="4j4-go-Voh"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4b6-dK-MA2" secondAttribute="trailing" id="6jY-jZ-QaB"/>
-                <constraint firstItem="4b6-dK-MA2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="qxW-1j-gzn"/>
-                <constraint firstItem="4b6-dK-MA2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="zSa-ap-pKa"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="2kj-VC-IED" secondAttribute="bottom" id="9Ph-Ld-PVd"/>
+                <constraint firstAttribute="trailing" secondItem="2kj-VC-IED" secondAttribute="trailing" id="S0e-PO-LTH"/>
+                <constraint firstItem="2kj-VC-IED" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YCP-x6-SXg"/>
+                <constraint firstItem="2kj-VC-IED" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="uEh-8Z-Umj"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -62,8 +74,11 @@
         <namedColor name="BackgroundPrimary">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="TintPrimary">
-            <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="BackgroundSecondary">
+            <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextPrimary">
+            <color red="0.071000002324581146" green="0.071000002324581146" blue="0.11400000005960464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

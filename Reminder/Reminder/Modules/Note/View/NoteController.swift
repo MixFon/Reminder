@@ -81,4 +81,8 @@ extension NoteController: NoteViewAction {
 	func closeView() {
 		self.router?.returnChapter()
 	}
+	
+	func cleanAllNotes() {
+		self.interactor?.makeState(requst: .clean)
+	}
 }

@@ -17,7 +17,6 @@ protocol NoteRoutingLogic {
 /// Протокол для передачи данных между роутерами.
 /// Подписывается роутер из которого передаются данные
 protocol NotePipe {
-	func returnChapter(chapter: _Chapter?)
 	func acceptChapter() -> _Chapter?
 }
 
@@ -33,10 +32,7 @@ final class NoteRouter: NoteRoutingLogic {
 	}
 	
 	func returnChapter() {
-		let chapter = self.dataStore?.getChapter()
-		self.controller?.dismiss(animated: true) {
-			self.pipe?.returnChapter(chapter: chapter)
-		}
+		self.controller?.dismiss(animated: true)
 	}
 	
 	func setPipe(pipe: NotePipe?) {

@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,20 +25,24 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0bv-re-get">
                             <rect key="frame" x="16" y="134" width="311" height="50"/>
+                            <color key="backgroundColor" name="TintPrimary"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="wNR-s6-YsX"/>
                             </constraints>
-                            <color key="tintColor" name="TintPrimary"/>
+                            <color key="tintColor" name="BackgroundPrimary"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="gray" title="Button"/>
+                            <buttonConfiguration key="configuration" style="gray" title="Button">
+                                <color key="baseForegroundColor" name="BackgroundPrimary"/>
+                                <color key="baseBackgroundColor" name="TintPrimary"/>
+                            </buttonConfiguration>
                             <connections>
                                 <action selector="pressChenge:" destination="iN0-l3-epB" eventType="touchUpInside" id="4Ai-T9-vTr"/>
                             </connections>
                         </button>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Yda-we-unh">
                             <rect key="frame" x="16" y="45" width="311" height="81"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <color key="textColor" systemColor="labelColor"/>
+                            <color key="backgroundColor" name="BackgroundPrimary"/>
+                            <color key="textColor" name="TextPrimary"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
@@ -79,6 +82,9 @@
         </view>
     </objects>
     <resources>
+        <namedColor name="BackgroundPrimary">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="BackgroundSecondary">
             <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -88,11 +94,5 @@
         <namedColor name="TintPrimary">
             <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

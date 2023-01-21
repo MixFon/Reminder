@@ -11,10 +11,12 @@ import CoreTableView
 protocol _Chapter {
 	var text: String? { get set }
 	var notes: [_Note]? { get set }
-	var hashValue: Int { get }
 	
-	mutating func addNote(note: _Note?)
-	mutating func deleteNote(note: _Note?)
+	func addNote(note: _Note?)
+	func deleteNote(note: _Note?)
+	
+	/// Устанавливает все ячейки в состояние неактина
+	func cleanAllNotes()
 }
 
 enum ReminderModel {
@@ -43,58 +45,4 @@ enum ReminderModel {
 			var states: [State]?
 		}
     }
-}
-
-// MARK: _Chapter
-extension ReminderModel {
-	
-	struct Chapter: _Chapter {
-		var text: String?
-		var notes: [_Note]?
-		
-		var hashValue: Int {
-			var hash = 0
-			for note in notes ?? [] {
-				hash = [hash, note.hachValue].hashValue
-			}
-			if let text {
-				hash = [hash, text.hashValue].hashValue
-			}
-			return hash
-		}
-		
-//		mutating func updateIndexes() {
-//			for index in (notes ?? []).indices {
-//				self.notes?[index].index = index
-//			}
-//		}
-		
-		mutating func addNote(note: _Note?) {
-//			guard let note else { return }
-//			for index in (notes ?? []).indices {
-//				if index == note.index {
-//					self.notes?[index] = note
-//					return
-//				}
-//			}
-//			self.notes?.append(note)
-//			updateIndexes()
-		}
-
-		mutating func deleteNote(note: _Note?) {
-//			guard let index = note?.index else { return }
-//			self.notes?.remove(at: index)
-//			updateIndexes()
-		}
-		
-		mutating func changeNoteIcon(note: _Note?) {
-//			guard let note else { return }
-//			for index in (notes ?? []).indices {
-//				if index == note.index {
-//					self.notes?[index].image?.opositeImage()
-//					return
-//				}
-//			}
-		}
-	}
 }

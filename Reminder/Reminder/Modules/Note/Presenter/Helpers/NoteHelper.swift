@@ -39,7 +39,7 @@ final class NoteHelper: _TableHelper {
 		var elements: [Element] = []
 		for note in data?.notes ?? [] {
 			let element = NoteView.ViewState.NoteCell(
-				id: String(note.hachValue ?? 0),
+				id: note.text ?? "elementNote",
 				title: note.text,
 				image: UIImage(systemName: note.image?.getStingIcon() ?? "questionmark.circle.fill"),
 				tintColor: note.image?.getColorIcon(),

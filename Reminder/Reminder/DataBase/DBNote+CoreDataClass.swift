@@ -18,14 +18,13 @@ public class DBNote: NSManagedObject, _Note {
 		}
 	}
 	
-	var hachValue: Int?
-	
 	func changeIcon() {
-		//debugPrint(self.image?.getBool())
-		//self.image?.opositeImage()
-		//debugPrint(self.image?.getBool())
-		self.isSelect = !(self.image?.getBool() ?? true)
+		self.isSelect = !self.isSelect
 		(UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+	}
+	
+	func cleanIcon() {
+		self.isSelect = false
 	}
 	
 }

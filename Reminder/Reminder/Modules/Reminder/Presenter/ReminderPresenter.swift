@@ -27,7 +27,10 @@ final class ReminderPresenter: ReminderPresentationLogic {
 		case .work(let chapters):
 			let chapterHelper = ChapterHelper(chapters: chapters, actions: self)
 			let state = chapterHelper.makeState()
-			let show = ReminderModel.ViewModel.Show(states: [state])
+			let show = ReminderModel.ViewModel.Show(
+				title: "Reminder",
+				states: [state]
+			)
 			self.controller?.displayContent(show: .display(show))
 		}
 	}

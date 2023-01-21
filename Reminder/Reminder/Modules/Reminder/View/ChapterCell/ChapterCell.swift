@@ -16,7 +16,9 @@ protocol _ChapterCell: CellData {
 
 extension _ChapterCell {
 	
-	public var height: CGFloat { return 79 }
+	public var height: CGFloat {
+		return calculateHeight(text: self.title ?? "", margin: 32)
+	}
 	
 	public func hashValues() -> [Int] {
 		return [
@@ -34,6 +36,27 @@ extension _ChapterCell {
 	public func cell(for tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
 		tableView.register(ChapterCell.nib(), forCellReuseIdentifier: ChapterCell.identifire)
 		return tableView.dequeueReusableCell(withIdentifier: ChapterCell.identifire, for: indexPath) as? ChapterCell ?? .init()
+	}
+	
+	private func calculateHeight(text: String, margin: CGFloat) -> CGFloat {
+		let leftMargin = 16.0
+		let rightMargin = 52.0
+		let topMargin = 28.0
+		let bottomMargin = 28.0
+		let finalWidth = UIScreen.main.bounds.width - leftMargin - rightMargin - margin
+		let titleSize = height(text: text, width: finalWidth, font: UIFont.systemFont(ofSize: 16))
+		return topMargin + titleSize + bottomMargin
+	}
+	
+	private func height(text: String, width: CGFloat, font: UIFont) -> CGFloat {
+		let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+		let boundingBox = text.boundingRect(
+			with: constraintRect,
+			options: .usesLineFragmentOrigin,
+			attributes: [NSAttributedString.Key.font: font],
+			context: nil
+		)
+		return ceil(boundingBox.height)
 	}
 }
 
