@@ -76,6 +76,7 @@ enum NoteModel {
     enum Response {
 		case work(_Chapter?)
 		case start
+		case notCells(_Chapter?)
     }
     
     enum ViewModel {

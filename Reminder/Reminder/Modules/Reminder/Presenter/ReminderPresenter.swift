@@ -32,6 +32,15 @@ final class ReminderPresenter: ReminderPresentationLogic {
 				states: [state]
 			)
 			self.controller?.displayContent(show: .display(show))
+		case .notCells:
+			let helper = NotCellsHelper(data: "Нет ни одного раздела.")
+			let state = helper.makeState()
+			let show = ReminderModel.ViewModel.Show(
+				title: "Reminder",
+				states: [state]
+			)
+			self.controller?.displayContent(show: .display(show))
+			
 		}
 	}
 }

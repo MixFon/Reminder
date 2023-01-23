@@ -32,6 +32,7 @@ enum ReminderModel {
     enum Response {
 		case start
 		case work([_Chapter]?)
+		case notCells
     }
     
 	enum ViewModel {

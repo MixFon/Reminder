@@ -31,6 +31,13 @@ final class NotePresenter: NotePresentationLogic {
 				states: [helper.makeState()]
 			)
 			self.controller?.displayContent(show: .display(show))
+		case .notCells(let chapter):
+			let helper = NotCellsHelper(data: "Нет ни одного пункта.")
+			let show = NoteModel.ViewModel.Show(
+				title: chapter?.text,
+				states: [helper.makeState()]
+			)
+			self.controller?.displayContent(show: .display(show))
 		}
 	}
 }

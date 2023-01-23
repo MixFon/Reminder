@@ -33,7 +33,11 @@ final class NoteInteractor: NoteBusinessLogic {
 	func makeState(requst: NoteModel.Request) {
 		switch requst {
 		case .start:
-			self.presenter?.buildState(response: .work(self.chapter))
+			if self.chapter?.notes?.isEmpty == true {
+				self.presenter?.buildState(response: .notCells(self.chapter))
+			} else {
+				self.presenter?.buildState(response: .work(self.chapter))
+			}
 		case .add:
 			self.note = nil
 			self.notion = NotionModel.Notion(

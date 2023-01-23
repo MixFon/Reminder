@@ -35,6 +35,12 @@ final class ReminderView: UIView {
 			var title: String?
 			var onAction: Command<ChapterHelper.CellAction>?
 		}
+		
+		struct Notification: _NotificationCell {
+			var id: String
+			var title: String?
+			var image: UIImage?
+		}
 	}
 	
 	func configure(with data: ReminderShow?) {

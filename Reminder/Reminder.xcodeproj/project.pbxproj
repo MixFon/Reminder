@@ -15,6 +15,9 @@
 		2926C50129447AB700A6A574 /* NoteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2926C4FC29447AB700A6A574 /* NoteInteractor.swift */; };
 		2926C50829447B7000A6A574 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2926C50729447B7000A6A574 /* NoteView.swift */; };
 		2926C50A29447B7E00A6A574 /* NoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2926C50929447B7E00A6A574 /* NoteView.xib */; };
+		292C387B297EBB7000341599 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292C3879297EBB7000341599 /* NotificationCell.swift */; };
+		292C387C297EBB7000341599 /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 292C387A297EBB7000341599 /* NotificationCell.xib */; };
+		292C387F297EC29900341599 /* NotCellsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292C387E297EC29900341599 /* NotCellsHelper.swift */; };
 		2939D85529536CF400631B58 /* NotionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2939D84E29536CF400631B58 /* NotionPresenter.swift */; };
 		2939D85629536CF400631B58 /* NotionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2939D84F29536CF400631B58 /* NotionRouter.swift */; };
 		2939D85729536CF400631B58 /* NotionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2939D85029536CF400631B58 /* NotionModels.swift */; };
@@ -60,6 +63,9 @@
 		2926C4FC29447AB700A6A574 /* NoteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteInteractor.swift; sourceTree = "<group>"; };
 		2926C50729447B7000A6A574 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		2926C50929447B7E00A6A574 /* NoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteView.xib; sourceTree = "<group>"; };
+		292C3879297EBB7000341599 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		292C387A297EBB7000341599 /* NotificationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
+		292C387E297EC29900341599 /* NotCellsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotCellsHelper.swift; sourceTree = "<group>"; };
 		2939D84E29536CF400631B58 /* NotionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionPresenter.swift; sourceTree = "<group>"; };
 		2939D84F29536CF400631B58 /* NotionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionRouter.swift; sourceTree = "<group>"; };
 		2939D85029536CF400631B58 /* NotionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionModels.swift; sourceTree = "<group>"; };
@@ -173,6 +179,31 @@
 			path = Interactor;
 			sourceTree = "<group>";
 		};
+		292C3877297EBB0E00341599 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				299F8EEE29410408001AC207 /* ChapterCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		292C3878297EBB2100341599 /* NotificationCell */ = {
+			isa = PBXGroup;
+			children = (
+				292C3879297EBB7000341599 /* NotificationCell.swift */,
+				292C387A297EBB7000341599 /* NotificationCell.xib */,
+			);
+			path = NotificationCell;
+			sourceTree = "<group>";
+		};
+		292C387D297EC1C200341599 /* SharedCells */ = {
+			isa = PBXGroup;
+			children = (
+				292C3878297EBB2100341599 /* NotificationCell */,
+			);
+			path = SharedCells;
+			sourceTree = "<group>";
+		};
 		2939D84D29536C4F00631B58 /* Notion */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +294,7 @@
 		2950A4F6293D04A300F66963 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				292C387D297EC1C200341599 /* SharedCells */,
 				2939D84D29536C4F00631B58 /* Notion */,
 				2926C4F729447A5900A6A574 /* Note */,
 				2950A4F7293D04B100F66963 /* Reminder */,
@@ -285,7 +317,7 @@
 		2950A4F9293D053B00F66963 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				299F8EEE29410408001AC207 /* ChapterCell */,
+				292C3877297EBB0E00341599 /* Cells */,
 				29931E85293D105600B585F0 /* ReminderController.swift */,
 				2950A4FC293D062600F66963 /* ReminderView.swift */,
 				2950A4FE293D064000F66963 /* ReminderView.xib */,
@@ -297,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				29BD6ECD2945CD3100DC4CDD /* ChapterHelper.swift */,
+				292C387E297EC29900341599 /* NotCellsHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -457,6 +490,7 @@
 			files = (
 				296D30D02944E69A009BC9CE /* NoteCell.xib in Resources */,
 				2939D85B29536CF400631B58 /* NotionView.xib in Resources */,
+				292C387C297EBB7000341599 /* NotificationCell.xib in Resources */,
 				299F8EF529410B03001AC207 /* Colors.xcassets in Resources */,
 				2950A4EF293D036E00F66963 /* LaunchScreen.storyboard in Resources */,
 				2950A4FF293D064000F66963 /* ReminderView.xib in Resources */,
@@ -474,6 +508,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2939D85529536CF400631B58 /* NotionPresenter.swift in Sources */,
+				292C387B297EBB7000341599 /* NotificationCell.swift in Sources */,
 				29F66336296DE3E900F34599 /* DBChapter+CoreDataClass.swift in Sources */,
 				2939D85729536CF400631B58 /* NotionModels.swift in Sources */,
 				29931E8B293D105600B585F0 /* ReminderInteractor.swift in Sources */,
@@ -484,6 +519,7 @@
 				2939D85929536CF400631B58 /* NotionInteractor.swift in Sources */,
 				29BD6ECC2945CB6B00DC4CDD /* ReminderManager.swift in Sources */,
 				29931E89293D105600B585F0 /* ReminderModels.swift in Sources */,
+				292C387F297EC29900341599 /* NotCellsHelper.swift in Sources */,
 				299F8EF12941045E001AC207 /* ChapterCell.swift in Sources */,
 				29931E8A293D105600B585F0 /* ReminderController.swift in Sources */,
 				2926C50129447AB700A6A574 /* NoteInteractor.swift in Sources */,

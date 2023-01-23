@@ -31,7 +31,11 @@ final class ReminderInteractor: ReminderBusinessLogic, ReminderDataStore {
 		switch requst {
 		case .start:
 			let chapters = self.manager?.getChapters()
-			self.presenter?.buildState(response: .work(chapters))
+			if chapters?.isEmpty == true {
+				self.presenter?.buildState(response: .notCells)
+			} else {
+				self.presenter?.buildState(response: .work(chapters))
+			}
 		case .add:
 			self.selectChapter = manager?.getNewChapter()
 			self.notion = NotionModel.Notion(
