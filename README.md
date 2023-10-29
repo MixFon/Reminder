@@ -9,6 +9,6 @@
 
 Так же приложение было написана с целью более глубоково изучения CoreData.
 
-Демо
-
+## Демо
+---
 ![](https://github.com/MixFon/Reminder/blob/main/gifs/demo.gif)
