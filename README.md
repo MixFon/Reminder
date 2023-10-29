@@ -12,4 +12,4 @@
 Демо
 
 
-![](https://github.com/MixFon/Reminder/blob/main/gifs/demo.gif)
+[![](https://github.com/MixFon/Reminder/blob/main/gifs/demo.gif)]
